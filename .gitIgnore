@@ -3,4 +3,4 @@
 /node_modules
 
 # misc
-/backend/config/config.env
+/config/config.env
