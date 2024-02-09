@@ -1,28 +1,26 @@
 const Post = require('../models/postModel.js');
-
-exports.createPost = async (req,res,next)=>{
+const ErrorHandler = require('../utils/errorhandler.js');
+const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
+exports.createPost = catchAsyncErrors(async (req,res,next)=>{
     const post = await Post.create(req.body);
     res.status(201).json({
         success:true,
         post
-    })
-}
+    });
+});
 
-exports.getAllPosts = async (req,res) =>{
+exports.getAllPosts = catchAsyncErrors(async (req,res) =>{
     const posts = await Post.find();
     res.status(200).json({
         success:true,
         posts
     });
-}
+});
 
-exports.updatePost = async (req,res,next) =>{
+exports.updatePost = catchAsyncErrors(async (req,res,next) =>{
     let post = await Post.findById(req.params.id);
     if(!post){
-        return res.status(500).json({
-            success:false,
-            message:"Post not found"
-        })
+        return next(new ErrorHandler("Post not found",404));
     }
     post = await Post.findByIdAndUpdate(req.params.id,req.body,{
         new:true,
@@ -33,23 +31,26 @@ exports.updatePost = async (req,res,next) =>{
         success:true,
         post
     });
-}
+});
 
-exports.deletePost = async (req,res,next) =>{
-
+exports.deletePost = catchAsyncErrors(async (req,res,next) =>{
     let post = await Post.findById(req.params.id);
-
     if(!post){
-        return res.status(500).json({
-            success:false,
-            message:"Post not found"
-        });
+       return next(new ErrorHandler("Post not found",404));
     }
-    
     await post.deleteOne(post);
-
     res.status(200).json({
         success:true,
         message: "Post Delete Successfully",
     });
-}
+});
+exports.getPostdetails = catchAsyncErrors(async (req,res,next) =>{
+    let post = await Post.findById(req.params.id);
+    if(!post){
+        return next(new ErrorHandler("Post not found",404));
+    }
+    res.status(200).json({
+        success:true,
+        post
+    });
+});
