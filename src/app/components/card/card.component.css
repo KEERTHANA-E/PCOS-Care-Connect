@@ -1,0 +1,63 @@
+.card {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+    perspective: 1000px;
+  }
+  .my-icon-class {
+    color: red!important;
+  }
+  .card:hover ,.card:active{
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2), 
+                0 6px 6px rgba(0,0,0,0.2);
+  }
+  .card-image {
+    position: relative;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlay:hover {
+    opacity: 1;
+  }
+  
+  .icons {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all .6s cubic-bezier(0.1, 0.9, 0.2, 1) 0.3s;
+  }
+  
+  .overlay:hover .icons {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  
+  .icons i {
+    color: #fff;
+    margin: 0 6px;
+    transition: transform .3s;
+    transform: translateX(-10px);
+  }
+  
+  .overlay:hover .icons i {
+    transform: translateX(0px);
+  }
+  
+  .icons i:hover {
+    transform: translateY(-10px) scale(1.1) rotate(15deg);
+  }
+
+
