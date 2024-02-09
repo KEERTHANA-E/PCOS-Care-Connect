@@ -6,7 +6,7 @@ const cloudinary = require("cloudinary");
 
 exports.createEduContent = catchAsyncErrors(async (req, res, next) => {
     const eduContent = await EduContent.create(req.body);
-    res.status(201).json({
+    return res.status(201).json({
         success: true,
         eduContent
     });
@@ -36,7 +36,7 @@ exports.updateEduContent = catchAsyncErrors(async (req, res, next) => {
         runValidators: true,
         useFindAndModify: false
     })
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         eduContent
     });
@@ -50,7 +50,7 @@ exports.deleteEduContent = catchAsyncErrors(async (req, res, next) => {
 
     await eduContent.deleteOne(eduContent);
 
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         message: "EduContent Delete Successfully",
     });
@@ -60,7 +60,7 @@ exports.getEduContentDetails = catchAsyncErrors(async (req, res, next) => {
     if (!eduContent) {
         return next(new ErrorHandler("EduContent not found",404));
     }
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         eduContent
     });
