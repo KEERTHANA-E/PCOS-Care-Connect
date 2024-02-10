@@ -1,0 +1,29 @@
+footer {
+    /* background: #c471f5; */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1)); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1)); */
+    background-color: rgb(110, 119, 134);
+     padding: 1rem;
+     font-size: 0.9rem;
+     color: #ffffff;
+   }
+   
+   footer a {
+     color: #ffffff;
+   }
+   
+   footer a:hover {
+     color: #ffffff;
+     text-decoration: none;
+   }
+   
+   .container {
+     text-align: center;
+   }
+   
+   .container p:first-child {
+     margin-bottom: 0.5rem;
+   }
+   

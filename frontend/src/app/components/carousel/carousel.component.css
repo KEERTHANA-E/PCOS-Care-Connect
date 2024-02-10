@@ -1,0 +1,10 @@
+img {
+    /* width: 50%; */
+    height: 500px;
+    object-fit: cover;
+    opacity: 0.8;
+}
+.carousel-caption{
+    /* color: black; */
+    font-size: larger;
+}
