@@ -8,7 +8,12 @@ import { CommunityService } from 'src/shared/service/community.service';
   styleUrls: ['./community-list.component.css']
 })
 export class CommunityListComponent implements OnInit{
-  artworks: any;
+  artworks: any =[
+    {
+      id:"1",
+      title:"Community"
+    }
+  ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageSize = 4;
   currentPage = 1;

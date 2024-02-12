@@ -2,13 +2,13 @@
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Navbar brand -->
-  
+
       <!-- Toggle button -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-light"></i>
       </button>
-  
+
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left links -->
@@ -16,7 +16,7 @@
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link active" aria-current="page" routerLink="">
               <div>
-                <i class="fa-solid fa-home"style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-home"style="font-size: 2rem;"></i>
               </div>
               <p class="d-none d-md-block d-lg-block">Home</p>
             </a>
@@ -24,7 +24,7 @@
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/about">
               <div>
-                <i class="fa-solid fa-circle-info" style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-circle-info" style="font-size: 2rem;"></i>
               </div>
               <p class="d-none d-md-block d-lg-block">About</p>
             </a>
@@ -32,7 +32,7 @@
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/community">
               <div>
-                <i class="fa-solid fa-image-portrait" style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-image-portrait" style="font-size: 2rem;"></i>
               </div>
               <p class="d-none d-md-block d-lg-block">Community</p>
             </a>
@@ -40,22 +40,22 @@
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/recommend">
               <div>
-                <i class="fa-brands fa-searchengin" style="font-size: 1.5rem;"></i>
+                <i class="fa-brands fa-searchengin" style="font-size: 2rem;"></i>
               </div>
-              <p class="d-none d-md-block d-lg-block">Recommendations</p>
+              <p class="d-none d-md-block d-lg-block">Recommend</p>
             </a>
           </li>
-  
+
         </ul>
         <!-- Left links -->
-  
+
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
           <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/content">
               <div>
-                <i class="fa-solid fa-book-open-reader" style="font-size: 1.5rem;"></i>
-                <!-- <i class="fa-solid fa-photo-film" style="font-size: 1.5rem;"></i> -->
+                <i class="fa-solid fa-book-open-reader" style="font-size: 2rem;"></i>
+                <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
                 <span *ngIf="this.userService.currentUser?.favList?.length!=0" class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser?.favList?.length}}</span>
               </div>
               <p class="d-none d-md-block d-lg-block">Library</p>
@@ -64,7 +64,7 @@
           <!-- <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="">
               <div>
-                <i class="fas fa-bell" style="font-size: 1.5rem;"></i>
+                <i class="fas fa-bell" style="font-size: 2rem;"></i>
                 <span class="badge rounded-pill badge-notification bg-info">0</span>
               </div>
               <p class="d-none d-md-block d-lg-block">Notification</p>
@@ -73,7 +73,7 @@
           <li *ngIf="this.userService.currentUser==null" class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/login">
               <div>
-                <i class="fa-solid fa-circle-user" style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
               </div>
               <p class="d-none d-md-block d-lg-block">Login</p>
             </a>
@@ -81,22 +81,22 @@
           <li *ngIf="this.userService.currentUser==null" class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="/signup">
               <div>
-                <i class="fa-solid fa-user"style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-user"style="font-size: 2rem;"></i>
               </div>
-              <p class="d-none d-md-block d-lg-block">signin</p>
+              <p class="d-none d-md-block d-lg-block">signup</p>
             </a>
           </li>
           <li *ngIf="this.userService.currentUser!=null" class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" (click)="logout()">
               <div>
-                <i class="fa-solid fa-circle-user" style="font-size: 1.5rem;"></i>
+                <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
               </div>
               <p class="d-none d-md-block d-lg-block">logout</p>
             </a>
           </li>
         </ul>
         <!-- Right links -->
-  
+
       </div>
       <!-- Collapsible wrapper -->
     </div>

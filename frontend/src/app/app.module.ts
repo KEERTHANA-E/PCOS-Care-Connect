@@ -15,13 +15,15 @@ import { RecommendComponent } from './components/recommend/recommend.component';
 import { LibraryComponent } from './components/library/library.component';
 import { AboutComponent } from './components/about/about.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
-import { ListComponent } from './components/list/list.component';
+import { ListComponent } from './components/library-list/list.component';
 import { CommunityComponent } from './components/community/community.component';
 import { ViewDetailsComponent } from './components/view-details/view-details.component';
 import { CommunityListComponent } from './components/community-list/community-list.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     ViewDetailsComponent,
     CommunityListComponent,
     CarouselComponent,
-    CardComponent
+    CardComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +51,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
