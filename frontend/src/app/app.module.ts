@@ -23,7 +23,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PaginatorComponent } from './paginator/paginator.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { WorkoutComponent } from './components/workout/workout.component';
+import { DietComponent } from './components/diet/diet.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
     CarouselComponent,
     CardComponent,
     PaginatorComponent,
+    WorkoutComponent,
+    DietComponent,
   ],
   imports: [
     BrowserModule,

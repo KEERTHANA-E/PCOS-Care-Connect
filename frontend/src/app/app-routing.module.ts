@@ -11,6 +11,8 @@ import { CommunityComponent } from './components/community/community.component';
 import { ViewDetailsComponent } from './components/view-details/view-details.component';
 import { RecommendComponent } from './components/recommend/recommend.component';
 import { CommunityListComponent } from './components/community-list/community-list.component';
+import { WorkoutComponent } from './components/workout/workout.component';
+import { DietComponent } from './components/diet/diet.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'recommend',
     component: RecommendComponent,
+  },
+  {
+    path: 'workout',
+    component: WorkoutComponent,
+  },
+  {
+    path: 'diet',
+    component: DietComponent,
   },
   {
     path: 'content',

@@ -1,28 +1,17 @@
-footer {
-    /* background: #c471f5; */
-    /* Chrome 10-25, Safari 5.1-6 */
-    /* background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1)); */
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /* background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1)); */
+.footer {
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
     background-color: #d1b1cb;
-     padding: 1rem;
-     font-size: 0.9rem;
-     color: #ffffff;
-   }
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+}
 
-   footer a {
-     color: #ffffff;
-   }
+.footer .container {
+    max-width: 1200px;
+}
 
-   footer a:hover {
-     color: #ffffff;
-     text-decoration: none;
-   }
-
-   .container {
-     text-align: center;
-   }
-
-   .container p:first-child {
-     margin-bottom: 0.5rem;
-   }
+.footer .text-muted {
+    font-size: 14px;
+}
