@@ -72,8 +72,8 @@
             <div>
               <i class="fa-solid fa-book-open-reader" style="font-size: 2rem;"></i>
               <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
-              <span *ngIf="this.userService.currentUser?.favList?.length!=0"
-                class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser?.favList?.length}}</span>
+              <span *ngIf="this.userService.currentUser.favList?.length!=0"
+                class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser.favList.length}}</span>
             </div>
             <p class="d-none d-md-block d-lg-block">Library</p>
           </a>
@@ -87,7 +87,7 @@
               <p class="d-none d-md-block d-lg-block">Notification</p>
             </a>
           </li> -->
-        <li *ngIf="this.userService.currentUser==null" class="nav-item text-center mx-2 mx-lg-1">
+        <li  class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" routerLink="/login">
             <div>
               <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
@@ -95,7 +95,7 @@
             <p class="d-none d-md-block d-lg-block">Login</p>
           </a>
         </li>
-        <li *ngIf="this.userService.currentUser==null" class="nav-item text-center mx-2 mx-lg-1">
+        <li  class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" routerLink="/signup">
             <div>
               <i class="fa-solid fa-user" style="font-size: 2rem;"></i>
@@ -103,7 +103,7 @@
             <p class="d-none d-md-block d-lg-block">signup</p>
           </a>
         </li>
-        <li *ngIf="this.userService.currentUser!=null" class="nav-item text-center mx-2 mx-lg-1">
+        <li  class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" (click)="logout()">
             <div>
               <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>

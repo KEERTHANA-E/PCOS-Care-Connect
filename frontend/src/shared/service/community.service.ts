@@ -20,7 +20,7 @@ export class CommunityService {
   addToFav(card: any) {
     if (this.userService.currentUser != null) {
       let favList = this.userService.currentUser?.favList;
-      const index = favList.findIndex((c: { id: any; }) => c.id === card.id);
+      const index = favList.findIndex(c => c === card.id);
       console.log(card, "data");
       if (index === -1) {
         favList.push(card);
@@ -34,10 +34,10 @@ export class CommunityService {
     }
 
   }
-  isFav(id: any) {
+  isFav(id: string) {
     if (this.userService.currentUser != null) {
       let favList = this.userService.currentUser?.favList;
-      const index = favList.findIndex((c: { id: any; }) => c.id === id);
+      const index = favList.findIndex(c => c === id);
       if (index === -1) {
         return false;
       } else {
