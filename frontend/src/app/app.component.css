@@ -1,3 +1,7 @@
 .bg{
   background-color: #F4F4F4;
 }
+
+.class1{
+  min-height: 100vh;
+}

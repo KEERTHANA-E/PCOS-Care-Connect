@@ -1,0 +1,10 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+}
+.carousel-item img,
+.carousel-item video {
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  object-fit:contain; /* This ensures that the entire image or video is visible within the fixed dimensions */
+}

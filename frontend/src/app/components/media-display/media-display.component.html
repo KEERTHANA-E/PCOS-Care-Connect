@@ -1,0 +1,17 @@
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let item of mediaList; let i = index" [class.active]="i === 0">
+      <img *ngIf="item.type === 'image'" [src]="item.url" class="d-block" alt="...">
+      <video *ngIf="item.type === 'video'" [src]="item.url" class="d-block" controls></video>
+    </div>
+  </div>
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

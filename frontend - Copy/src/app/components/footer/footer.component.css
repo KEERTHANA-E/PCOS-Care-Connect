@@ -1,0 +1,17 @@
+.footer {
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #d1b1cb;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+}
+
+.footer .container {
+    max-width: 1200px;
+}
+
+.footer .text-muted {
+    font-size: 14px;
+}

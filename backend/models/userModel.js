@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   },
+  favList: [
+    {
+      type: String,
+    }
+  ],
   role: {
     type: String,
     default: "user",

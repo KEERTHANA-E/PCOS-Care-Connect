@@ -37,11 +37,11 @@ const eduContentSchema = mongoose.Schema({
         },
     ],
     
-    // postedBy: {
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: "User",
-    //     required: true,
-    // },
+    postedBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

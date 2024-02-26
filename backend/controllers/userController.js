@@ -5,6 +5,7 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const { use } = require("../app");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -25,11 +26,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       url: "myCloud.secure_url",
     },
   });
-  // sendToken(user, 201, res);
-  res.status(201).json({
-    success: true,
-    user
-  });
+  sendToken(user, 201, res);
 });
 
 // Login User
@@ -53,10 +50,22 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHander("Invalid email or password", 401));
   }
-
   sendToken(user, 200, res);
 });
-
+// LoggedIn User
+exports.loggedInUser = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.user.id;
+  console.log("User logged in"+userId);
+  const user = await User.findOne({_id: userId});
+  if(!user){
+    console.log("User not found");
+    return next(new ErrorHander("Invalid user Id",401));
+  }
+  res.status(200).json({
+    success:true,
+    user
+  })
+});
 // Logout User
 exports.logout = catchAsyncErrors(async (req, res, next) => {
   res.cookie("token", null, {

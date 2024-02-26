@@ -8,14 +8,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
-  exports:[
+  imports: [CommonModule],
+  exports: [
+    MatDialogModule,
+    ShareButtonsModule,
+    ShareIconsModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatTooltipModule,
@@ -23,7 +27,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatExpansionModule,
     MatSnackBarModule,
     MatInputModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

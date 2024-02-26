@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/shared/model/user.model';
 import { UserService } from 'src/shared/service/user.service';
 
 @Component({
@@ -22,5 +23,26 @@ export class SignupComponent {
       password: this.fb.control('', [Validators.required]),
     });
   }
-  submitSignUpForm() {}
+  submitSignUpForm() {
+    if (this.signUpForm.valid) {
+      const formData = this.signUpForm.value;
+      let obj = {
+        name: formData['name'],
+        email: formData['email'],
+        password: formData['password'],
+      };
+      this.userService.register(obj).subscribe(
+        (response: User) => {
+          this.userService.currentUser = response;
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          console.log('error' + error);
+        }
+      );
+    } else {
+      alert('Please enter valid credentials');
+    }
+  }
 }

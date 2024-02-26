@@ -20,6 +20,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'details/:id',
+    component: CardDetailsComponent,
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
@@ -53,7 +57,7 @@ const routes: Routes = [
       },
       {
         path: 'details/:id',
-        component: CardDetailsComponent,
+        component: ViewDetailsComponent,
       },
     ],
   },
@@ -67,7 +71,7 @@ const routes: Routes = [
       },
       {
         path: 'details/:id',
-        component: ViewDetailsComponent,
+        component: CardDetailsComponent,
       },
     ],
   },

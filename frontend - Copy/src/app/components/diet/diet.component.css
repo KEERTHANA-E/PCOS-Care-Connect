@@ -1,0 +1,25 @@
+.bg2{
+  background-color: #d1b1cb;
+  color: white;
+}
+.bg3{
+  background-color: #7c616c;
+  color: white;
+}
+.bg1{
+  background-color:#DDCAD9;
+  color: #7c616c;
+}
+.card{
+  max-width: fit-content;
+  max-height: fit-content;
+}
+.ingredient-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ingredient-list li {
+    margin-bottom: 5px;
+  }

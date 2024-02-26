@@ -1,3 +1,14 @@
 <div class="container m-3">
-    <app-carousel ></app-carousel>
+  <app-carousel></app-carousel>
+  <div class="m-3">
+    <button type="button" class="btn btn-lg btn-outline-secondary" (click)="openDialogForAdd()">add new post</button>
+  </div>
+
+  <div class="container m-3">
+    <div class="mt-3 row">
+      <div class="contianer mb-3 col-lg-3" *ngFor="let a of artworks">
+        <app-card [cardData]="a"></app-card>
+      </div>
+    </div>
+  </div>
 </div>

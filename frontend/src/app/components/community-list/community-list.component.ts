@@ -23,15 +23,16 @@ export class CommunityListComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.getArtworks();
+    this.getAllPosts();
   }
-  getArtworks() {
+  getAllPosts() {
     const page = this.currentPage;
     const limit = this.pageSize;
     this.isActive=true;
-      this.artworks = this.communityService.getApiData(page, limit).subscribe((response: any) => {
-        this.artworks = response;
-        this.TotalItems=response.pagination.total;
+      this.artworks = this.communityService.getAllPosts().subscribe((response: any) => {
+        console.log(response)
+        this.artworks = response.posts;
+        this.TotalItems=response.posts.length;
         this.communityService.dataLoaded = true;
       });
   }
@@ -39,7 +40,8 @@ export class CommunityListComponent implements OnInit{
     console.log("change event is called in collections page")
     this.currentPage = event.pageIndex + 1;
     this.pageSize = event.pageSize;
-    this.getArtworks();
+    this.getAllPosts();
   }
+
 }
 

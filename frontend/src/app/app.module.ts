@@ -26,6 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { DietComponent } from './components/diet/diet.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { MediaDisplayComponent } from './components/media-display/media-display.component';
+import { ShareDialogoxComponent } from './components/share-dialogox/share-dialogox.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { TmpComponent } from './tmp/tmp.component';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 @NgModule({
   declarations: [
@@ -48,6 +54,10 @@ import { DietComponent } from './components/diet/diet.component';
     PaginatorComponent,
     WorkoutComponent,
     DietComponent,
+    AddPostComponent,
+    MediaDisplayComponent,
+    ShareDialogoxComponent,
+    TmpComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +67,8 @@ import { DietComponent } from './components/diet/diet.component';
     MaterialModule,
     SharedModule,
     ReactiveFormsModule,
+    ShareButtonsModule,
+    ShareIconsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

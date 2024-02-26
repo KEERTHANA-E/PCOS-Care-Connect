@@ -1,1 +1,44 @@
-<p>view-details works!</p>
+<!-- <img src="https://www.artic.edu/iiif/2/{{artworks.image_id}}/full/843,/0/default.jpg"
+  onerror="this.onerror=null; this.src='../../assets/no-img.jpg';"
+    style="height:300px ;object-fit:cover;" class="card-img-top" alt="..."> -->
+<!-- <p>{{artworks.id}}</p> -->
+<div class="container bg-container mt-5">
+  <div class="container">
+    <img class="mt-3" src="../../../assets/community.svg" style="width:100%; height: 500px; object-fit: fill;"
+      onerror="this.onerror=null; this.src='../../../assets/no-img.jpg';" />
+  </div>
+  <div class="container header">
+    <h1 class="text-center">{{ artworks.title }}</h1>
+  </div>
+  <div class="container meta-data">
+    <p>{{ artworks.content }}</p>
+    <!-- <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="fs-5">
+            <strong>Description</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="fs-5">
+            <strong>Publication history</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngIf="artworks.publication_history==null">no data</p>
+        <p *ngIf="artworks.publication_history!=null">{{ artworks.publication_history }}</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="fs-5">
+            <strong>Exhibition history</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngIf="artworks.exhibition_history==null">no data</p>
+        <p *ngIf="artworks.exhibition_history!=null">{{ artworks.exhibition_history }}</p>
+      </mat-expansion-panel>
+    </mat-accordion> -->
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="row">
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[4, 12, 20, 100]"
+    (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+</div>

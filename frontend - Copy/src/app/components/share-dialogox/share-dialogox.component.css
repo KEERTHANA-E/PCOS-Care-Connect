@@ -1,0 +1,32 @@
+.dialog-container {
+    padding: 0.8rem;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    overflow: auto;
+  }
+
+  .dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .dialog-message {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .fa-circle-xmark {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .fa-circle-xmark:hover {
+    color: #e1306c;
+    transform: scale(1.2);
+  }
+
+  

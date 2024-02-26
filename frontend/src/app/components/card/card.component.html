@@ -8,8 +8,9 @@
         <div class="icons">
           <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==false" class='far fa-heart fa-2x' (click)="onClick(cardData)"></i>
           <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==true" class='fa-solid fa-heart fa-2x my-icon-class' (click)="onClick(cardData)"></i>
-          <i matTooltip="Share" matTooltipPosition="above" class='far fa-paper-plane fa-2x' ></i>
-          <a [routerLink]="'details/' + cardData.id">
+          <i matTooltip="Share" matTooltipPosition="above" class='far fa-paper-plane fa-2x'
+            (click)="openDialogForShare(cardData._id)"></i>
+          <a [routerLink]="'details/' + cardData._id">
             <i matTooltip="More" matTooltipPosition="above" class='fas fa-angle-double-right fa-2x'></i>
           </a>
         </div>

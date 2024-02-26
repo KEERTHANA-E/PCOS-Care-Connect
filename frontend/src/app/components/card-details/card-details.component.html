@@ -1,1 +1,39 @@
-<p>card-details works!</p>
+<div class="container">
+  <div class="content">
+    <!-- Display images -->
+    <app-media-display [mediaList]="carouselItems"></app-media-display>
+
+    <div class="media">
+      <div class="">
+        <i class="fa-solid fa-circle-user" style="font-size: 3rem; color: #d1b1cb;"></i>
+      </div>
+      <div class="media-body">
+        <label>{{artworks.userName}}</label>
+        <span>{{ artworks.createdAt | date:'dd MMM yyyy' }}</span>
+      </div>
+    </div>
+    <h1>{{ artworks.title }}</h1>
+    <p>{{ artworks.content }}</p>
+    <!-- You can display the full content here -->
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <ul>
+        <li *ngFor="let x of comments">
+          <strong>{{ x.userName }}:</strong> {{ x.comment }}
+        </li>
+      </ul>
+      <form>
+        <textarea name="comment" placeholder="Add a comment"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Share Section -->
+    <div class="share-section">
+      <h3>Share</h3>
+      <!-- Add share options here -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Share Card Details</h1>
+  <p class="dialog-message">Please select a social media platform to share your card details:</p>
+  <share-buttons theme="modern-dark"
+    [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+    [showIcon]="true" [showText]="true" url={{this.data}} description="Checkout this amazing artwork" class="pt-5">
+  </share-buttons>
+<!-- <share-buttons show="11"></share-buttons> -->
+  <i class="fa-solid fa-circle-xmark text-danger" (click)="onClose()"></i>
+</div>
