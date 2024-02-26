@@ -8,11 +8,24 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class UserService {
-  currentUser: User;
+  currentUser!: User;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
-    // this.currentUser=JSON.parse(localStorage.getItem('user')||'');
-    this.currentUser = new User('username', 'password', [], 'email');
+
+  }
+  loadLoggedInUser(): Observable<any>{
+    console.log("loaded user");
+    const apiUrl = `http://localhost:3000/api/v1/profile`;
+    const options = { withCredentials: true };
+    return this.http.get<any>(apiUrl,options).pipe(
+      tap((response) => {
+        console.log('Account details retireved successful', response);
+      }),
+      catchError((error) => {
+        console.log('Error occurred: ', error);
+        return throwError(error);
+      })
+    );
   }
   logout(): Observable<any> {
     const apiUrl = `http://localhost:3000/api/v1/logout`;

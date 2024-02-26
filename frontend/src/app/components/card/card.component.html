@@ -1,22 +1,27 @@
-<div class="card h-100" >
-    <div class="card-image">
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/002/139/532/original/online-healthcare-and-medical-concept-of-doctor-illustration-medicine-consultation-and-treatment-via-application-of-smartphone-or-computer-connected-internet-clinic-vector.jpg"
-        onerror="this.onerror=null; this.src='../../assets/no-img.jpg';"
-        style="height:300px ;object-fit:cover;" class="card-img-top" alt="...">
-      <div class='overlay'>
-        <div class="icons">
-          <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==false" class='far fa-heart fa-2x' (click)="onClick(cardData)"></i>
-          <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==true" class='fa-solid fa-heart fa-2x my-icon-class' (click)="onClick(cardData)"></i>
-          <i matTooltip="Share" matTooltipPosition="above" class='far fa-paper-plane fa-2x'
-            (click)="openDialogForShare(cardData._id)"></i>
-          <a [routerLink]="'details/' + cardData._id">
-            <i matTooltip="More" matTooltipPosition="above" class='fas fa-angle-double-right fa-2x'></i>
-          </a>
-        </div>
+<div class="card h-100">
+  <div class="card-image">
+    <img
+      src="https://static.vecteezy.com/system/resources/previews/002/139/532/original/online-healthcare-and-medical-concept-of-doctor-illustration-medicine-consultation-and-treatment-via-application-of-smartphone-or-computer-connected-internet-clinic-vector.jpg"
+      onerror="this.onerror=null; this.src='../../assets/no-img.jpg';" style="height:300px ;object-fit:cover;"
+      class="card-img-top" alt="...">
+    <div class='overlay'>
+      <div class="icons">
+        <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==false" class='far fa-heart fa-2x'
+          (click)="onClick(cardData)"></i>
+        <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==true" class='fa-solid fa-heart fa-2x my-icon-class'
+          (click)="onClick(cardData)"></i>
+        <i matTooltip="edit" matTooltipPosition="above" class="fa-regular fa-pen-to-square fa-2x"
+          (click)="openDialogForUpdate(cardData)"></i>
+        <i matTooltip="delete" matTooltipPosition="above" class="fa-solid fa-trash fa-2x"
+          (click)="openDialogForDelete(cardData)"></i>
+        <a [routerLink]="'details/' + cardData._id">
+          <i matTooltip="More" matTooltipPosition="above" class='fas fa-angle-double-right fa-2x'></i>
+        </a>
       </div>
     </div>
-    <div class="card-body">
-      <h4 class="card-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{cardData.title}}</h4>
-    </div>
   </div>
+  <div class="card-body">
+    <h4 class="card-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{cardData.title}}
+    </h4>
+  </div>
+</div>

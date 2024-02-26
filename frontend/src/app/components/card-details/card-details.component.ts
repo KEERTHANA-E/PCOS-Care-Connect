@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommunityComponent } from '../community/community.component';
 import { CommunityService } from 'src/shared/service/community.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-card-details',
@@ -12,6 +13,7 @@ export class CardDetailsComponent {
   panelOpenState = false;
   artworks: any;
   _id: string;
+  commentForm: FormGroup | any;
   carouselItems: any[] = [
     {
       type: 'image',
@@ -44,25 +46,40 @@ export class CardDetailsComponent {
       // Add more images as needed
     ],
   };
-
-  comments: any[] = [
-    { comment: 'This is a comment.', userName: 'riya' },
-    { comment: 'Another comment here.', userName: 'raya' },
-  ];
-
-  newComment: string = '';
   constructor(
     private activeRoute: ActivatedRoute,
-    private communityService: CommunityService
+    private communityService: CommunityService,
+    private fb: FormBuilder
   ) {
     this._id = this.activeRoute.snapshot.params['id'];
     console.log('active', this.activeRoute);
     console.log('id', this._id);
   }
   ngOnInit(): void {
+    this.commentForm=this.fb.group({
+      text : this.fb.control('',[Validators.required])
+    });
     this.getArtworks();
   }
-
+  addComment(){
+    if(this.commentForm.valid){
+      console.log('data',this.commentForm.value);
+      const obj = {
+        text : this.commentForm.value.text
+      }
+      this.communityService.addComment(obj,this.artworks).subscribe({
+        next: (response) => {
+          console.log('user created successfully:', response);
+          window.location.reload();
+          // do something else, like refresh the user list
+        },
+        error: (err) => {
+          console.log('error creating user:', err);
+          // handle error - maybe display an error message to user
+        },
+      });
+    }
+  }
   getArtworks() {
     this.artworks = this.communityService
       .viewPost(this._id)

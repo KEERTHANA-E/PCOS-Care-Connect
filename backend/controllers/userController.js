@@ -54,8 +54,8 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 // LoggedIn User
 exports.loggedInUser = catchAsyncErrors(async (req, res, next) => {
-  const userId = req.user.id;
-  console.log("User logged in"+userId);
+  const userId = req.user;
+  console.log("User logged in"+req);
   const user = await User.findOne({_id: userId});
   if(!user){
     console.log("User not found");

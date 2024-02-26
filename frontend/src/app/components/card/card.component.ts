@@ -5,6 +5,7 @@ import { CommunityService } from 'src/shared/service/community.service';
 import { UserService } from 'src/shared/service/user.service';
 import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
 
 @Component({
   selector: 'app-card',
@@ -27,7 +28,7 @@ export class CardComponent implements OnInit {
   }
   ngOnInit() {
     console.log(this.cardData);
-    this.isfav = this.communityService.isFav(this.cardData.id);
+    this.isfav = this.communityService.isFav(this.cardData._id);
     console.log(this.isfav);
   }
   openSnackBar() {
@@ -36,12 +37,22 @@ export class CardComponent implements OnInit {
   openSnackBar2() {
     this.snackBar.open('removed from fav', 'close');
   }
+  getLoggedInUserData() {
+    this.userService.loadLoggedInUser().subscribe((response: any) => {
+      console.log('response' + response);
+      this.userService.currentUser = response.user;
+    });
+  }
   onClick(card: any) {
     if (this.userService.currentUser != null) {
-      this.communityService.addToFav(card);
-      this.isfav = this.communityService.isFav(card.id);
-      if (this.isfav == true) this.openSnackBar();
-      else this.openSnackBar2();
+      this.communityService.toggleLike(card).subscribe((response: any) => {
+        this.getLoggedInUserData();
+        this.isfav = this.communityService.isFav(card._id);
+        console.log('response' + response.message);
+        if (response.message === 'Post liked successfully') this.openSnackBar();
+        else this.openSnackBar2();
+      });
+      window.location.reload();
     } else {
       alert('login to add to fav');
     }
@@ -55,13 +66,48 @@ export class CardComponent implements OnInit {
       });
     }
   }
-  openDialogForShare(id: any) {
-    console.log('openDialogForShare');
-    const url = `${window.location.origin}/details/${id}`;
+
+  openDialogForUpdate(post: any) {
     const dialogRef = this.dialog.open(ShareDialogoxComponent, {
-      width: '1000px',
-      height: '300px',
-      data: url,
+      width: '800px',
+      height: '500px',
+      data: post,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != null) {
+        console.log('res', result);
+
+        post.title = result.data.title;
+        post.content = result.data.content;
+        this.communityService.updatePost(post).subscribe({
+          next: (response) => {
+            console.log('post updated successfully:', response);
+            window.location.reload();
+            // do something else, like refresh the user list
+          },
+          error: (err) => {
+            console.log('error creating user:', err);
+            // handle error - maybe display an error message to user
+          },
+        });
+      }
+    });
+  }
+  openDialogForDelete(post: any): void {
+    const dialogRef = this.dialog.open(DeleteDialogboxComponent, {
+      width: '300px',
+      height: '120px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data == true) {
+        console.log('confirmed');
+        this.communityService.deletePost(post).subscribe((response: any) => {
+          console.log('response after delete', response);
+          window.location.reload();
+        });
+      } else {
+        console.log("deletion cancelled");
+      }
     });
   }
 }

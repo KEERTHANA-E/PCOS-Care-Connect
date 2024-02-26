@@ -1,10 +1,25 @@
-<div class="dialog-container">
-  <h1 class="dialog-title">Share Card Details</h1>
-  <p class="dialog-message">Please select a social media platform to share your card details:</p>
-  <share-buttons theme="modern-dark"
-    [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
-    [showIcon]="true" [showText]="true" url={{this.data}} description="Checkout this amazing artwork" class="pt-5">
-  </share-buttons>
-<!-- <share-buttons show="11"></share-buttons> -->
-  <i class="fa-solid fa-circle-xmark text-danger" (click)="onClose()"></i>
+<div class="container mt-3" [formGroup]="updtateForm">
+  <h1 class="text-center">Create post</h1>
+  <div class="row">
+    <mat-form-field class="col-lg-6">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Notes</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5" formControlName="content"></textarea>
+    </mat-form-field>
+    <div>
+      <form action="" method="post" enctype="multipart/form-data">
+        <input type="file">
+      </form>
+      <label>Choose file</label>
+    </div>
+
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <button class="btn btn-primary me-3" type="submit" (click)="updatePost()">update post</button>
+    <button class="btn btn-danger" type="submit" (click)="closeDialog()">cancel</button>
+  </div>
 </div>

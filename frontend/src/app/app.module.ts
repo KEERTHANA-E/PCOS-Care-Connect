@@ -32,6 +32,7 @@ import { ShareDialogoxComponent } from './components/share-dialogox/share-dialog
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { TmpComponent } from './tmp/tmp.component';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { DeleteDialogboxComponent } from './components/delete-dialogbox/delete-dialogbox.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     MediaDisplayComponent,
     ShareDialogoxComponent,
     TmpComponent,
+    DeleteDialogboxComponent,
   ],
   imports: [
     BrowserModule,
