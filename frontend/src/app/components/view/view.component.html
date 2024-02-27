@@ -6,16 +6,10 @@
       class="card-img-top" alt="...">
     <div class='overlay'>
       <div class="icons">
-        <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==false" class='far fa-heart fa-2x'
-          (click)="onClick(cardData)"></i>
-        <i matTooltip="Fav" matTooltipPosition="above" *ngIf="isfav==true" class='fa-solid fa-heart fa-2x my-icon-class'
-          (click)="onClick(cardData)"></i>
-        <i *ngIf="cardData.postedBy==this.userService.currentUser._id" matTooltip="edit" matTooltipPosition="above"
-          class="fa-regular fa-pen-to-square fa-2x"
-          (click)="openDialogForUpdate(cardData)"></i>
-        <i *ngIf="cardData.postedBy==this.userService.currentUser._id" matTooltip="delete" matTooltipPosition="above"
-          class="fa-solid fa-trash fa-2x"
-          (click)="openDialogForDelete(cardData)"></i>
+        <i *ngIf="this.userService.currentUser.role=='admin'" matTooltip="edit" matTooltipPosition="above"
+          class="fa-regular fa-pen-to-square fa-2x" (click)="openDialogForUpdate(cardData)"></i>
+        <i *ngIf="this.userService.currentUser.role=='admin'" matTooltip="delete" matTooltipPosition="above"
+          class="fa-solid fa-trash fa-2x" (click)="openDialogForDelete(cardData)"></i>
         <a [routerLink]="'details/' + cardData._id">
           <i matTooltip="More" matTooltipPosition="above" class='fas fa-angle-double-right fa-2x'></i>
         </a>

@@ -1,34 +1,32 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CommunityService } from 'src/shared/service/community.service';
+import { LibraryService } from 'src/shared/service/library.service';
 import { UserService } from 'src/shared/service/user.service';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
-import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
+import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css'],
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css'],
 })
-export class CardComponent implements OnInit {
-  artworks: any;
+export class ViewComponent implements OnInit {
   @Input() cardData: any;
-
   isfav!: boolean;
   constructor(
     private router: Router,
-    private communityService: CommunityService,
+    private libraryService: LibraryService,
     private snackBar: MatSnackBar,
     public userService: UserService,
     private dialog: MatDialog
   ) {
     console.log(this.router.url);
   }
-  ngOnInit() {
+  ngOnInit(): void {
     console.log(this.cardData);
-    this.isfav = this.communityService.isFav(this.cardData._id);
+    this.isfav = this.libraryService.isFav(this.cardData._id);
     console.log(this.isfav);
   }
   openSnackBar() {
@@ -43,20 +41,20 @@ export class CardComponent implements OnInit {
       this.userService.currentUser = response.user;
     });
   }
-  onClick(card: any) {
-    if (this.userService.currentUser != null) {
-      this.communityService.toggleLike(card).subscribe((response: any) => {
-        this.getLoggedInUserData();
-        this.isfav = this.communityService.isFav(card._id);
-        console.log('response' + response.message);
-        if (response.message === 'Post liked successfully') this.openSnackBar();
-        else this.openSnackBar2();
-      });
-      window.location.reload();
-    } else {
-      alert('login to add to fav');
-    }
-  }
+  // onClick(card: any) {
+  //   if (this.userService.currentUser != null) {
+  //     this.libraryService.toggleLike(card).subscribe((response: any) => {
+  //       this.getLoggedInUserData();
+  //       this.isfav = this.libraryService.isFav(card._id);
+  //       console.log('response' + response.message);
+  //       if (response.message === 'Post liked successfully') this.openSnackBar();
+  //       else this.openSnackBar2();
+  //     });
+  //     window.location.reload();
+  //   } else {
+  //     alert('login to add to fav');
+  //   }
+  // }
   share(id: number) {
     if (navigator.share) {
       navigator.share({
@@ -79,7 +77,7 @@ export class CardComponent implements OnInit {
 
         post.title = result.data.title;
         post.content = result.data.content;
-        this.communityService.updatePost(post).subscribe({
+        this.libraryService.updateEduContent(post).subscribe({
           next: (response) => {
             console.log('post updated successfully:', response);
             window.location.reload();
@@ -101,12 +99,12 @@ export class CardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.data == true) {
         console.log('confirmed');
-        this.communityService.deletePost(post).subscribe((response: any) => {
+        this.libraryService.deleteEduContent(post).subscribe((response: any) => {
           console.log('response after delete', response);
           window.location.reload();
         });
       } else {
-        console.log("deletion cancelled");
+        console.log('deletion cancelled');
       }
     });
   }

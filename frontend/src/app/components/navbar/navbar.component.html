@@ -70,6 +70,17 @@
         <li class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" routerLink="/content">
             <div>
+              <i class="fa-regular fa-heart" style="font-size: 2rem;"></i>
+              <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
+              <span *ngIf="this.userService.currentUser.favList.length!=0"
+                class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser.favList.length}}</span>
+            </div>
+            <p class="d-none d-md-block d-lg-block">Favorites</p>
+          </a>
+        </li>
+        <li class="nav-item text-center mx-2 mx-lg-1">
+          <a class="nav-link" routerLink="/content">
+            <div>
               <i class="fa-solid fa-book-open-reader" style="font-size: 2rem;"></i>
               <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
             </div>

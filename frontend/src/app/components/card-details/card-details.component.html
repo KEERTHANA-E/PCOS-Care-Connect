@@ -12,31 +12,36 @@
         <span>{{ artworks.createdAt | date:'dd MMM yyyy' }}</span>
       </div>
     </div>
-    <h1>{{ artworks.title }}</h1>
+    <div class="d-flex flex-row">
+      <h1>{{ artworks.title }}</h1>
+      <p *ngIf="artworks.postedBy==this.userService.currentUser._id" style="color: black;">
+      <i
+        class="fa-regular fa-pen-to-square fa-lg m-2" (click)="openDialogForUpdate(artworks)"></i>
+        <span class="mx-2">Edit | </span>
+      <i
+        class="fa-solid fa-trash fa-lg m-2" (click)="openDialogForDelete(artworks)"></i>
+        <span class="mx-2">Delete</span>
+        </p>
+    </div>
     <p>{{ artworks.content }}</p>
     <!-- You can display the full content here -->
 
     <!-- Comments Section -->
     <div class="comments-section">
-      <h3>Comments</h3>
+      <h3><b>Comments</b></h3>
       <p *ngIf="this.artworks.comments.length==0" class="text-muted">no comments</p>
       <ul>
         <li *ngFor="let x of this.artworks.comments">
           <strong>{{ x.userName }}:</strong> {{ x.text }}
         </li>
       </ul>
-      <div class="d-flex p-3 flex-column" [formGroup]="commentForm">
+      <div class="d-flex p-3 flex-column row" [formGroup]="commentForm">
         <mat-form-field>
           <mat-label>Comment</mat-label>
-          <textarea formControlName="text" matInput ></textarea>
+          <textarea formControlName="text" matInput></textarea>
         </mat-form-field>
-        <button class="btn btn-primary me-3" type="submit" (click)="addComment()">Submit</button>
+        <button class="col-2 btn btn-primary me-3" type="submit" (click)="addComment()">comment</button>
       </div>
 
-      <!-- Share Section -->
-      <div class="share-section">
-        <h3>Share</h3>
-        <!-- Add share options here -->
-      </div>
     </div>
   </div>

@@ -3,14 +3,14 @@
   margin: 0 auto;
   padding: 20px;
 }
- .media {
+.media {
   display: flex;
   align-items: center;
   padding-top: 15px;
   margin-bottom: 5px;
   padding-bottom: 20px;
 }
- .media .avatar {
+.media .avatar {
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -25,7 +25,7 @@
   margin: 0;
   font-size: 20ppx;
 }
- .media .media-body span {
+.media .media-body span {
   display: block;
   font-size: 15px;
 }
@@ -43,6 +43,8 @@ h1 {
 
 p {
   font-size: 20px;
+  max-width: 100%;
+  word-wrap: break-word;
   color: #666;
 }
 

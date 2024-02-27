@@ -76,27 +76,37 @@ export class LibraryService {
       })
     );
   }
-  addToFav(card: any) {
-    if (this.userService.currentUser != null) {
-      let favList = this.userService.currentUser?.favList;
-      const index = favList.findIndex((c) => c === card.id);
-      console.log(card, 'data');
-      if (index === -1) {
-        favList.push(card);
-      } else {
-        favList.splice(index, 1);
-      }
-      localStorage.setItem(
-        'user',
-        JSON.stringify(this.userService.currentUser)
-      );
-    } else {
-      alert('login to access your favorites');
-    }
+  toggleLike(post: any): Observable<any> {
+    const url = `http://localhost:3000/api/v1/edu/${post._id}/like`;
+    const options = { withCredentials: true };
+    return this.http.post(url, post, options).pipe(
+      tap((response) => {
+        console.log('post liked successfully', response);
+      }),
+      catchError((error) => {
+        console.log('Error occurred: ', error);
+        return throwError(error);
+      })
+    );
+  }
+  addComment(obj: any, post: any): Observable<any> {
+    const url = `http://localhost:3000/api/v1/post/${post._id}/comments`;
+    const options = { withCredentials: true };
+    return this.http.post(url, obj, options).pipe(
+      tap((response) => {
+        console.log('post comment saved successfully', response);
+      }),
+      catchError((error) => {
+        console.log('Error occurred: ', error);
+        return throwError(error);
+      })
+    );
   }
   isFav(id: string) {
     if (this.userService.currentUser != null) {
       let favList = this.userService.currentUser?.favList;
+      console.log(this.userService.currentUser);
+      console.log(id);
       const index = favList.findIndex((c) => c === id);
       if (index === -1) {
         return false;
@@ -104,6 +114,7 @@ export class LibraryService {
         return true;
       }
     } else {
+      console.log('empty');
       return false;
     }
   }

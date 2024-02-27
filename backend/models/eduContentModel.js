@@ -11,7 +11,7 @@ const eduContentSchema = mongoose.Schema({
         required: [true, "Please Enter eduContent content"],
     },
     images: [
-        
+
         {
             public_id: {
                 type: String,
@@ -24,7 +24,7 @@ const eduContentSchema = mongoose.Schema({
         },
     ],
     videos: [
-        
+
         {
             public_id: {
                 type: String,
@@ -36,10 +36,27 @@ const eduContentSchema = mongoose.Schema({
             },
         },
     ],
-    
+    likes: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: "User"
+        }
+    ],
+    comments: [
+        {
+            text: { type: String, required: true },
+            userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+            userName: { type: String, required: true },
+            createdAt: { type: Date, default: Date.now }
+        }
+    ],
     postedBy: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
+        required: true,
+    },
+    userName: {
+        type: String,
         required: true,
     },
     createdAt: {
