@@ -30,10 +30,12 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { MediaDisplayComponent } from './components/media-display/media-display.component';
 import { ShareDialogoxComponent } from './components/share-dialogox/share-dialogox.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
-import { TmpComponent } from './tmp/tmp.component';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { DeleteDialogboxComponent } from './components/delete-dialogbox/delete-dialogbox.component';
 import { ViewComponent } from './components/view/view.component';
+import { FavComponent } from './components/fav/fav.component';
+import { FavListComponent } from './components/fav-list/fav-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -59,9 +61,11 @@ import { ViewComponent } from './components/view/view.component';
     AddPostComponent,
     MediaDisplayComponent,
     ShareDialogoxComponent,
-    TmpComponent,
     DeleteDialogboxComponent,
     ViewComponent,
+    FavComponent,
+    FavListComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

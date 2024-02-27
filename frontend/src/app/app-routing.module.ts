@@ -13,6 +13,9 @@ import { RecommendComponent } from './components/recommend/recommend.component';
 import { CommunityListComponent } from './components/community-list/community-list.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { DietComponent } from './components/diet/diet.component';
+import { FavComponent } from './components/fav/fav.component';
+import { FavListComponent } from './components/fav-list/fav-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,20 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'fav',
+    component: FavComponent,
+    children: [
+      {
+        path: '',
+        component: FavListComponent,
+      },
+      {
+        path: 'details/:id',
+        component: CardDetailsComponent,
+      },
+    ],
   },
   {
     path: 'signup',
@@ -42,6 +59,10 @@ const routes: Routes = [
   {
     path: 'workout',
     component: WorkoutComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'diet',

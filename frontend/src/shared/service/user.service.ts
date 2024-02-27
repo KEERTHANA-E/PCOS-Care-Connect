@@ -22,7 +22,7 @@ export class UserService {
         console.log('Account details retireved successful', response);
       }),
       catchError((error) => {
-        console.log('Error occurred: ', error);
+        console.log('Error occurred in profile loading : ', error);
         return throwError(error);
       })
     );

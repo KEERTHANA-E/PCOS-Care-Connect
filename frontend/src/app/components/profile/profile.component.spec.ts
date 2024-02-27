@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TmpComponent } from './tmp.component';
+import { ProfileComponent } from './profile.component';
 
-describe('TmpComponent', () => {
-  let component: TmpComponent;
-  let fixture: ComponentFixture<TmpComponent>;
+describe('ProfileComponent', () => {
+  let component: ProfileComponent;
+  let fixture: ComponentFixture<ProfileComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TmpComponent]
+      declarations: [ProfileComponent]
     });
-    fixture = TestBed.createComponent(TmpComponent);
+    fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

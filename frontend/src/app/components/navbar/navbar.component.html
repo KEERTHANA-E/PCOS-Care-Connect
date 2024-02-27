@@ -68,7 +68,7 @@
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
         <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" routerLink="/content">
+          <a class="nav-link" routerLink="/fav">
             <div>
               <i class="fa-regular fa-heart" style="font-size: 2rem;"></i>
               <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
@@ -113,11 +113,11 @@
           </a>
         </li>
         <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="isLoggedIn==true">
-          <a class="nav-link" (click)="logout()">
+          <a class="nav-link" routerLink="/profile">
             <div>
               <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
             </div>
-            <p class="d-none d-md-block d-lg-block">logout</p>
+            <p class="d-none d-md-block d-lg-block">Profile</p>
           </a>
         </li>
       </ul>

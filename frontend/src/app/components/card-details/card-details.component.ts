@@ -41,15 +41,6 @@ export class CardDetailsComponent {
         'Managing PCOS involves lifestyle changes such as a healthy diet, regular exercise, and medications to regulate hormones and manage symptoms.',
     },
   ];
-  content: any = {
-    title: 'Sample Title',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    images: [
-      { url: '../../../assets/community.svg', altText: 'Image 1' },
-      { url: '../../../assets/community.svg', altText: 'Image 2' },
-      // Add more images as needed
-    ],
-  };
   constructor(
     private activeRoute: ActivatedRoute,
     private communityService: CommunityService,
@@ -85,6 +76,19 @@ export class CardDetailsComponent {
         },
       });
     }
+  }
+  deleteComment(comment: any) {
+    this.communityService.deleteComment(comment, this.artworks).subscribe({
+      next: (response) => {
+        console.log('user deleted the comment successfully:', response);
+        window.location.reload();
+        // do something else, like refresh the user list
+      },
+      error: (err) => {
+        console.log('error deleting user comment :', err);
+        // handle error - maybe display an error message to user
+      },
+    });
   }
   getArtworks() {
     this.artworks = this.communityService

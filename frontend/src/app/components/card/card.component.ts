@@ -37,16 +37,9 @@ export class CardComponent implements OnInit {
   openSnackBar2() {
     this.snackBar.open('removed from fav', 'close');
   }
-  getLoggedInUserData() {
-    this.userService.loadLoggedInUser().subscribe((response: any) => {
-      console.log('response' + response);
-      this.userService.currentUser = response.user;
-    });
-  }
   onClick(card: any) {
     if (this.userService.currentUser != null) {
       this.communityService.toggleLike(card).subscribe((response: any) => {
-        this.getLoggedInUserData();
         this.isfav = this.communityService.isFav(card._id);
         console.log('response' + response.message);
         if (response.message === 'Post liked successfully') this.openSnackBar();

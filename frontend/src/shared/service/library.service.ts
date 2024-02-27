@@ -90,11 +90,24 @@ export class LibraryService {
     );
   }
   addComment(obj: any, post: any): Observable<any> {
-    const url = `http://localhost:3000/api/v1/post/${post._id}/comments`;
+    const url = `http://localhost:3000/api/v1/edu/${post._id}/comments`;
     const options = { withCredentials: true };
     return this.http.post(url, obj, options).pipe(
       tap((response) => {
         console.log('post comment saved successfully', response);
+      }),
+      catchError((error) => {
+        console.log('Error occurred: ', error);
+        return throwError(error);
+      })
+    );
+  }
+  deleteComment(comment: any, post: any): Observable<any> {
+    const url = `http://localhost:3000/api/v1/edu/${post._id}/comments/${comment._id}`;
+    const options = { withCredentials: true };
+    return this.http.delete(url, options).pipe(
+      tap((response) => {
+        console.log('deleted comment successfully', response);
       }),
       catchError((error) => {
         console.log('Error occurred: ', error);

@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
-    this.getLoggedInUserData();
     this.getAllPosts();
   }
   artworks: any = [];
@@ -85,12 +84,6 @@ export class HomeComponent implements OnInit {
         });
         this.getAllPosts();
       }
-    });
-  }
-  getLoggedInUserData() {
-    this.userService.loadLoggedInUser().subscribe((response: any) => {
-      console.log('response' + response);
-      this.userService.currentUser = response.user;
     });
   }
 }

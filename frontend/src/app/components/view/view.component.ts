@@ -35,26 +35,7 @@ export class ViewComponent implements OnInit {
   openSnackBar2() {
     this.snackBar.open('removed from fav', 'close');
   }
-  getLoggedInUserData() {
-    this.userService.loadLoggedInUser().subscribe((response: any) => {
-      console.log('response' + response);
-      this.userService.currentUser = response.user;
-    });
-  }
-  // onClick(card: any) {
-  //   if (this.userService.currentUser != null) {
-  //     this.libraryService.toggleLike(card).subscribe((response: any) => {
-  //       this.getLoggedInUserData();
-  //       this.isfav = this.libraryService.isFav(card._id);
-  //       console.log('response' + response.message);
-  //       if (response.message === 'Post liked successfully') this.openSnackBar();
-  //       else this.openSnackBar2();
-  //     });
-  //     window.location.reload();
-  //   } else {
-  //     alert('login to add to fav');
-  //   }
-  // }
+
   share(id: number) {
     if (navigator.share) {
       navigator.share({

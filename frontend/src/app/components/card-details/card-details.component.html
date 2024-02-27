@@ -31,8 +31,17 @@
       <h3><b>Comments</b></h3>
       <p *ngIf="this.artworks.comments.length==0" class="text-muted">no comments</p>
       <ul>
-        <li *ngFor="let x of this.artworks.comments">
-          <strong>{{ x.userName }}:</strong> {{ x.text }}
+        <li *ngFor="let comment of artworks.comments">
+          <div class="d-flex align-items-center">
+            <strong>{{ comment.userName }}:</strong>
+            <span>{{ comment.text }}</span>
+            <!-- Spacer to push the delete icon to the end -->
+            <span class="flex-grow-1"></span>
+            <!-- Show delete icon if comment userId matches logged-in user ID -->
+            <ng-container *ngIf="comment.userId === userService.currentUser._id">
+              <i class="fa-solid fa-trash-alt fa-lg ml-2" (click)="deleteComment(comment)"></i>
+            </ng-container>
+          </div>
         </li>
       </ul>
       <div class="d-flex p-3 flex-column row" [formGroup]="commentForm">
