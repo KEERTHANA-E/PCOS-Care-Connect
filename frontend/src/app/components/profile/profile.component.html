@@ -6,14 +6,16 @@
           <div class="account-settings">
             <div class="user-profile">
               <div class="user-avatar">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                <img
+                  src="https://media.istockphoto.com/id/1194645897/vector/portrait-of-a-strong-beautiful-woman-in-profile-with-blond-hair.jpg?s=612x612&w=0&k=20&c=9Z02rn2gyyxGicLuqrAV1fCKZndMRS5FzgRn93zoX1Y="
+                  alt="Maxwell Admin">
               </div>
               <h5 class="user-name">{{this.loggedInUser.name}}</h5>
               <h6 class="user-email">{{this.loggedInUser.email}}</h6>
             </div>
             <div class="about">
               <h5 class="headers">About</h5>
-              <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+              <p>{{this.loggedInUser.about}}</p>
             </div>
           </div>
         </div>
@@ -53,6 +55,13 @@
               <input matInput formControlName="height" />
             </mat-form-field>
           </div>
+          <h2 class="mb-2 headers">About</h2>
+          <div class="row gutters">
+            <mat-form-field class="col-lg-9">
+              <mat-label>About</mat-label>
+              <input matInput formControlName="about" />
+            </mat-form-field>
+          </div>
           <h2 class="mb-2 headers">Address Details</h2>
           <div class="row gutters">
             <mat-form-field class="col-lg-6">
@@ -78,7 +87,7 @@
           <div class="row gutters">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="text-right">
-                <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                <button type="button" id="submit" name="submit" class="btn btn-primary" (click)="updateUser()">Update</button>
               </div>
             </div>
           </div>

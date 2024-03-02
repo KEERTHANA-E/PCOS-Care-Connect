@@ -38,6 +38,37 @@ const userSchema = new mongoose.Schema({
       type: String,
     }
   ],
+  age:
+  {
+    type: Number,
+  },
+  weight:
+  {
+    type: Number,
+  },
+  height:
+  {
+    type: Number
+  },
+  phoneNumber:
+  {
+    type: String,
+  },
+  street:{
+    type:String
+  },
+  city: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  zipCode: {
+    type: String
+  },
+  about:{
+    type: String
+  },
   role: {
     type: String,
     default: "user",

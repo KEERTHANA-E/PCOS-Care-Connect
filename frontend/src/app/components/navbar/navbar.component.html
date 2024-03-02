@@ -21,14 +21,14 @@
             <p class="d-none d-md-block d-lg-block">Home</p>
           </a>
         </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
+        <!-- <li class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" routerLink="/about">
             <div>
               <i class="fa-solid fa-circle-info" style="font-size: 2rem;"></i>
             </div>
             <p class="d-none d-md-block d-lg-block">About</p>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link" routerLink="/community">
             <div>
@@ -61,32 +61,33 @@
             <p class="d-none d-md-block d-lg-block">Workout</p>
           </a>
         </li>
+         <li class="nav-item text-center mx-2 mx-lg-1">
+           <a class="nav-link" routerLink="/fav">
+             <div>
+               <i class="fa-regular fa-heart" style="font-size: 2rem;"></i>
+               <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
+               <span *ngIf="this.userService.currentUser.favList.length!=0"
+                 class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser.favList.length}}</span>
+             </div>
+             <p class="d-none d-md-block d-lg-block">Favorites</p>
+           </a>
+         </li>
+         <li class="nav-item text-center mx-2 mx-lg-1">
+           <a class="nav-link" routerLink="/content">
+             <div>
+               <i class="fa-solid fa-book-open-reader" style="font-size: 2rem;"></i>
+               <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
+             </div>
+             <p class="d-none d-md-block d-lg-block">Library</p>
+           </a>
+         </li>
       </ul>
       <!-- Left links -->
 
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" routerLink="/fav">
-            <div>
-              <i class="fa-regular fa-heart" style="font-size: 2rem;"></i>
-              <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
-              <span *ngIf="this.userService.currentUser.favList.length!=0"
-                class="badge rounded-pill badge-notification bg-danger">{{this.userService.currentUser.favList.length}}</span>
-            </div>
-            <p class="d-none d-md-block d-lg-block">Favorites</p>
-          </a>
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <a class="nav-link" routerLink="/content">
-            <div>
-              <i class="fa-solid fa-book-open-reader" style="font-size: 2rem;"></i>
-              <!-- <i class="fa-solid fa-photo-film" style="font-size: 2rem;"></i> -->
-            </div>
-            <p class="d-none d-md-block d-lg-block">Library</p>
-          </a>
-        </li>
+
         <!-- <li class="nav-item text-center mx-2 mx-lg-1">
             <a class="nav-link" routerLink="">
               <div>
@@ -96,7 +97,7 @@
               <p class="d-none d-md-block d-lg-block">Notification</p>
             </a>
           </li> -->
-        <li  class="nav-item text-center mx-2 mx-lg-1" *ngIf="isLoggedIn==false">
+        <li  class="nav-item text-center mx-2 mx-lg-1" *ngIf="this.isLoggedIn===false">
           <a class="nav-link" routerLink="/login">
             <div>
               <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
@@ -104,7 +105,7 @@
             <p class="d-none d-md-block d-lg-block">Login</p>
           </a>
         </li>
-        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="isLoggedIn==false">
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="this.isLoggedIn===false">
           <a class="nav-link" routerLink="/signup">
             <div>
               <i class="fa-solid fa-user" style="font-size: 2rem;"></i>
@@ -112,12 +113,20 @@
             <p class="d-none d-md-block d-lg-block">signup</p>
           </a>
         </li>
-        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="isLoggedIn==true">
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="isLoggedIn !== false">
           <a class="nav-link" routerLink="/profile">
             <div>
               <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
             </div>
             <p class="d-none d-md-block d-lg-block">Profile</p>
+          </a>
+        </li>
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="this.isLoggedIn!==false">
+          <a class="nav-link" (click)="logout()">
+            <div>
+              <i class="fa-solid fa-circle-user" style="font-size: 2rem;"></i>
+            </div>
+            <p class="d-none d-md-block d-lg-block">logout</p>
           </a>
         </li>
       </ul>
