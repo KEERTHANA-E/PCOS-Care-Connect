@@ -1,63 +1,26 @@
-<body>
-<div class="m-5">
-  <div class="d-flex flex-row flex-wrap">
-    <!-- Workout Cards -->
-    <div class="card h-100 bg1 m-4">
-      <div class="card-header">Morning Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">Cardio Workout</h3>
-        <p class="card-text">Start your day with a 30-minute cardio session, such as running, cycling, or jumping rope.
-        </p>
-      </div>
+<div class="container bg-white m-3">
+  <h1 class="text-center">workout Recommendation</h1>
+  <form class="d-flex flex-wrap" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3 col-md-4 p-2">
+      <mat-form-field class="w-100">
+        <input matInput type="number" formControlName="weight" placeholder="Weight">
+      </mat-form-field>
     </div>
 
-    <div class="card h-100 bg2 m-4">
-      <div class="card-header">Morning Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">Strength Training</h3>
-        <p class="card-text">Follow up with a 20-minute strength training session focusing on exercises like squats,
-          lunges, push-ups, and planks.</p>
-      </div>
+    <div class="mb-3 col-md-4 p-2">
+      <mat-form-field class="w-100">
+        <input matInput type="number" formControlName="height" placeholder="Height">
+      </mat-form-field>
     </div>
 
-    <!-- Lunch Cards -->
-    <div class="card h-100 bg3 m-4">
-      <div class="card-header">Afternoon Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">Yoga and Stretching</h3>
-        <p class="card-text">Take a break from work and unwind with a 30-minute yoga and stretching session to improve
-          flexibility and relax your mind.</p>
-      </div>
+    <div class="mb-3 col-md-4 p-2">
+      <mat-form-field class="w-100">
+        <input matInput type="number" formControlName="age" placeholder="Age">
+      </mat-form-field>
     </div>
 
-    <div class="card h-100 bg1 m-4">
-      <div class="card-header">Afternoon Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">Core Workout</h3>
-        <p class="card-text">Engage your core muscles with a 15-minute core workout including exercises like crunches,
-          planks, and leg raises.</p>
-      </div>
+    <div class="mb-3 col-md-12">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
     </div>
-
-    <!-- Dinner Cards -->
-    <div class="card h-100 bg2 m-4">
-      <div class="card-header">Evening Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">HIIT Workout</h3>
-        <p class="card-text">End your day with a high-intensity interval training (HIIT) session for 20 minutes,
-          alternating between bursts of intense exercise and short rest periods.</p>
-      </div>
-    </div>
-
-    <div class="card h-100 bg3 m-4">
-      <div class="card-header">Evening Routine</div>
-      <div class="card-body">
-        <h3 class="card-title">Cool Down</h3>
-        <p class="card-text">Finish your workout day with a 10-minute cool-down session, focusing on deep breathing,
-          gentle stretches, and relaxation techniques.</p>
-      </div>
-    </div>
-  </div>
+  </form>
 </div>
-
-</body>

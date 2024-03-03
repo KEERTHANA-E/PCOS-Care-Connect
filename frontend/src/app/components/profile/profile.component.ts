@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/shared/model/user.model';
 import { UserService } from 'src/shared/service/user.service';
@@ -8,7 +8,7 @@ import { UserService } from 'src/shared/service/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
   constructor(private fb: FormBuilder, private userService: UserService) {}
   loggedInUser!: User;
   addForm: FormGroup | any;
