@@ -1,3 +1,5 @@
+import { Images } from "./images.model";
+
 export class User {
   _id: string;
   name: string;
@@ -14,7 +16,8 @@ export class User {
   weight: number;
   height: number;
   about: string;
-  constructor(_id:string,name: string, password: string, favList: string[],email: string, role:string, phoneNumber: string, street: string, city: string, zipCode : string, state: string, age: number, weight: number, height: number, about: string){
+  avatar :Images;
+  constructor(_id:string,name: string, password: string, favList: string[],email: string, role:string, phoneNumber: string, street: string, city: string, zipCode : string, state: string, age: number, weight: number, height: number, about: string,avatar:Images){
     this.name = name;
     this.password = password;
     this.favList = favList;
@@ -30,5 +33,6 @@ export class User {
     this.weight=weight;
     this.height=height;
     this.about=about;
+    this.avatar = avatar;
   }
 }

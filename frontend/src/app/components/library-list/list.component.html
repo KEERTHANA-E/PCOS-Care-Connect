@@ -1,4 +1,8 @@
-<div class="container m-3">
+<div class="container mt-3">
+  <div class="mt-3 text-end">
+    <button type="button" class="btn btn-lg btn-outline-secondary" (click)="openDialogForAdd()">add new
+      post</button>
+  </div>
   <div class="mt-3 row">
     <div class="contianer mb-3 col-lg-3" *ngFor="let a of artworks">
       <app-view [cardData]="a"></app-view>

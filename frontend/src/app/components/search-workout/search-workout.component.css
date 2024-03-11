@@ -1,0 +1,38 @@
+.card {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  margin: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: bottom 0.3s ease;
+}
+.card-content h3 {
+  font-size: 1.5rem;
+}
+.card:hover .card-content {
+  bottom: +40px;
+}

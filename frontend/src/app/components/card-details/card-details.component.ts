@@ -4,7 +4,7 @@ import { CommunityComponent } from '../community/community.component';
 import { CommunityService } from 'src/shared/service/community.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from '../update-post/share-dialogox.component';
 import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
 import { UserService } from 'src/shared/service/user.service';
 
@@ -95,6 +95,7 @@ export class CardDetailsComponent {
       .viewPost(this._id)
       .subscribe((response: any) => {
         this.artworks = response.post;
+        this.carouselItems = response.post.images;
         console.log('details' + response.post);
         this.communityService.dataLoaded = true;
       });

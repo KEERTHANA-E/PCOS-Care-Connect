@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommunityService } from 'src/shared/service/community.service';
 import { UserService } from 'src/shared/service/user.service';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from '../update-post/share-dialogox.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
 
@@ -27,7 +27,8 @@ export class CardComponent implements OnInit {
     console.log(this.router.url);
   }
   ngOnInit() {
-    console.log(this.cardData);
+    console.log('catdinfo');
+    console.log(this.cardData.images);
     this.isfav = this.communityService.isFav(this.cardData._id);
     console.log(this.isfav);
   }
@@ -99,7 +100,7 @@ export class CardComponent implements OnInit {
           window.location.reload();
         });
       } else {
-        console.log("deletion cancelled");
+        console.log('deletion cancelled');
       }
     });
   }

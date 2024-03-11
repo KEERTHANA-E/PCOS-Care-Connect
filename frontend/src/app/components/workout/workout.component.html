@@ -1,26 +1,44 @@
 <div class="container bg-white m-3">
   <h1 class="text-center">workout Recommendation</h1>
-  <form class="d-flex flex-wrap" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form class="d-flex flex-wrap" [formGroup]="form" (ngSubmit)="onSubmit()" >
     <div class="mb-3 col-md-4 p-2">
+      <mat-label>Weight</mat-label>
       <mat-form-field class="w-100">
         <input matInput type="number" formControlName="weight" placeholder="Weight">
       </mat-form-field>
     </div>
 
     <div class="mb-3 col-md-4 p-2">
+      <mat-label>Height</mat-label>
       <mat-form-field class="w-100">
         <input matInput type="number" formControlName="height" placeholder="Height">
       </mat-form-field>
     </div>
-
-    <div class="mb-3 col-md-4 p-2">
-      <mat-form-field class="w-100">
-        <input matInput type="number" formControlName="age" placeholder="Age">
-      </mat-form-field>
-    </div>
-
     <div class="mb-3 col-md-12">
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="primary" type="submit" (click)="displayRandomSchedule()">Submit</button>
     </div>
   </form>
 </div>
+<!-- <button (click)="displayRandomSchedule()" class="m-3">click here</button> -->
+
+<div class="card bg-light mb-3" *ngIf="selectedWeek">
+  <div class="card-header">Week Plan</div>
+  <div class="card-body">
+    <div *ngFor="let day of selectedWeek | keyvalue">
+      <p><strong>{{ day.key }}:</strong> {{ day.value }}</p>
+    </div>
+    <p><strong>day-7:</strong> Rest day</p>
+  </div>
+</div>
+<!-- <ng-container *ngIf="scheduleData">
+<div class="card bg-light mb-3">
+  <div class="card-header">Week Plan</div>
+  <div class="card-body">
+    <div *ngFor="let day of scheduleData | keyvalue">
+      <p><strong>{{ day.key }}:</strong> {{ day.value }}</p>
+    </div>
+    <p><strong>day-7:</strong> Rest day</p>
+  </div>
+</div>
+</ng-container> -->
+

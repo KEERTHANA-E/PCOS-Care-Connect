@@ -1,9 +1,7 @@
 export class Images {
     url:string
     public_id : string
-    _id : string
-    constructor(url:string,public_id :string,_id:string){
-        this._id=_id;
+    constructor(url:string,public_id :string){
         this.public_id=public_id;
         this.url=url;
     }

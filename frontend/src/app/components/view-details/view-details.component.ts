@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LibraryService } from 'src/shared/service/library.service';
 import { UserService } from 'src/shared/service/user.service';
 import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from '../update-post/share-dialogox.component';
+import { EditEduComponent } from '../edit-edu/edit-edu.component';
 
 @Component({
   selector: 'app-view-details',
@@ -94,13 +95,14 @@ export class ViewDetailsComponent {
       .viewEduContent(this._id)
       .subscribe((response: any) => {
         this.artworks = response.eduContent;
+        this.carouselItems = response.eduContent.images;
         console.log('details in library' + response.eduContent.postedBy);
         console.log('details in library' + this.userService.currentUser._id);
         this.libraryService.dataLoaded = true;
       });
   }
   openDialogForUpdate(post: any) {
-    const dialogRef = this.dialog.open(ShareDialogoxComponent, {
+    const dialogRef = this.dialog.open(EditEduComponent, {
       width: '800px',
       height: '500px',
       data: post,

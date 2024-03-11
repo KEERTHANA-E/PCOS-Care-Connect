@@ -15,10 +15,11 @@ const {
   loggedInUser,
 } = require("../controllers/userController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
-
+const {uploadImage} =require("../middleware/multer");
 const router = express.Router();
 
-router.route("/register").post(registerUser);
+// router.route("/register").post(registerUser);
+router.post("/register", uploadImage.single('avatar'), registerUser);
 
 router.route("/login").post(loginUser);
 

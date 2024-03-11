@@ -3,46 +3,55 @@
   <h1 class="text-center">Diet Recommendation</h1>
   <div formGroupName="input_data" class="d-flex flex-wrap">
     <div class="form-group col-md-6 p-2">
+      <mat-label>Calories</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="Calories" placeholder="Calories">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Fat Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="FatContent" placeholder="Fat Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Saturated Fat Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="SaturatedFatContent" placeholder="Saturated Fat Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Cholesterol Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="CholesterolContent" placeholder="Cholesterol Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Sodium Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="SodiumContent" placeholder="Sodium Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Carbohydrate Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="CarbohydrateContent" placeholder="Carbohydrate Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Fiber Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="FiberContent" placeholder="Fiber Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Sugar Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="SugarContent" placeholder="Sugar Content">
       </mat-form-field>
     </div>
     <div class="form-group col-md-6 p-2">
+      <mat-label>Protein Content</mat-label>
       <mat-form-field class="w-100">
         <input matInput formControlName="ProteinContent" placeholder="Protein Content">
       </mat-form-field>
@@ -50,8 +59,8 @@
   </div>
 
   <div class="row">
- <!-- Max Nutritional Values -->
- <div formArrayName="max_nutritional_values" class="col-md-6 mb-3">
+    <!-- Max Nutritional Values -->
+    <!-- <div formArrayName="max_nutritional_values" class="col-md-6 mb-3">
    <div *ngFor="let control of maxNutritionalValues.controls; let i = index" class="d-flex align-items-center">
      <div class="flex-grow-1 mr-2">
        <mat-form-field appearance="fill" class="w-100">
@@ -64,26 +73,55 @@
    </div>
    <button mat-raised-button color="primary" type="button" (click)="addMaxNutritionalValue()">Add Max Nutritional
      Value</button>
- </div>
+ </div> -->
 
- <!-- Ingredient Filter -->
- <div formArrayName="ingredient_filter" class="col-md-6 mb-3">
-   <div *ngFor="let control of ingredientFilter.controls; let i = index" class="d-flex align-items-center mb-3">
-     <div class="flex-grow-1 mr-2">
-       <mat-form-field appearance="fill" class="w-100">
-         <input matInput [formControlName]="i" placeholder="Ingredient Filter {{ i + 1 }}">
-       </mat-form-field>
-     </div>
-     <button mat-icon-button color="warn" type="button" (click)="removeIngredientFilter(i)" class="align-self-start">
-       <mat-icon>clear</mat-icon>
-     </button>
-   </div>
-   <button mat-raised-button color="primary" type="button" (click)="addIngredientFilter()">Add Ingredient
-     Filter</button>
- </div>
- </div>
+    <!-- Ingredient Filter -->
+    <div formArrayName="ingredient_filter" class="col-md-6 mb-3">
+      <div *ngFor="let control of ingredientFilter.controls; let i = index" class="d-flex align-items-center mb-3">
+        <div class="flex-grow-1 mr-2">
+          <mat-form-field appearance="fill" class="w-100">
+            <input matInput [formControlName]="i" placeholder="Ingredient Filter {{ i + 1 }}">
+          </mat-form-field>
+        </div>
+        <button mat-icon-button color="warn" type="button" (click)="removeIngredientFilter(i)" class="align-self-start">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="primary" type="button" (click)="addIngredientFilter()">Add Ingredient
+        Filter</button>
+    </div>
+  </div>
 
   <div class="text-center pb-3">
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </div>
 </form>
+
+<div *ngIf="recipes && recipes.length > 0" class="recipe-container">
+  <div *ngFor="let recipe of recipes" class="card mb-3 recipe-card">
+    <div class="recipe p-2 m-3">
+      <h2>{{ recipe.Name }}</h2>
+      <div *ngIf="recipe.Images && recipe.Images.length > 0" class="col-md-4 mb-3">
+        <img [src]="parseImageUrls(recipe.Images)[0]" class="recipe-image">
+        </div>
+      <img *ngIf="recipe.Images=='character(0)'" src="../../../assets/foods.svg" alt="{{ recipe.Name }}"
+        class="recipe-image">
+      <p><strong>Description:</strong> {{ recipe.Description }}</p>
+      <p><strong>Ingredients:</strong></p>
+      <ul>
+        <ng-container *ngFor="let ingredient of parseIngredients(recipe.RecipeIngredientParts)">
+          <li>{{ ingredient }}</li>
+        </ng-container>
+      </ul>
+      <p><strong>Instructions:</strong></p>
+      <ol>
+        <ng-container *ngFor="let instruction of parseInstructions(recipe.RecipeInstructions)">
+          <li>{{ instruction }}</li>
+        </ng-container>
+      </ol>
+      <p><strong>Prep Time:</strong> {{ recipe.PrepTime }}</p>
+    </div>
+  </div>
+</div>
+
+

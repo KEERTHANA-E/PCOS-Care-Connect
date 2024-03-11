@@ -8,29 +8,41 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./share-dialogox.component.css'],
 })
 export class ShareDialogoxComponent {
-  updtateForm: FormGroup | any;
+  updateForm: FormGroup | any;
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialogRef<ShareDialogoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   ngOnInit(): void {
-    console.log("data" + this.data);
-    this.updtateForm = this.fb.group({
+    console.log('data' + this.data);
+    this.updateForm = this.fb.group({
       title: this.fb.control(this.data.title, [Validators.required]),
       content: this.fb.control(this.data.content, [Validators.required]),
     });
   }
   updatePost() {
-    if (this.updtateForm.valid) {
-      console.log('before sending ', this.updtateForm.value);
-      const tmp = this.updtateForm.value;
-      this.dialog.close({ data: tmp });
+    if (this.updateForm.valid) {
+      console.log('before sending ', this.updateForm.value);
+      const tmp = this.updateForm.value;
+      this.dialog.close({ data: [tmp,this.testFiles] });
     } else {
       alert('fill all fields');
     }
   }
   closeDialog() {
     this.dialog.close();
+  }
+  testFiles: File[] = [];
+
+  onFilesSelected(event: any) {
+    if (event.target.files.length > 0) {
+      this.testFiles = [];
+      for (let i = 0; i < event.target.files.length; i++) {
+        const file = event.target.files[i];
+        this.testFiles.push(file);
+        console.log(file);
+      }
+    }
   }
 }

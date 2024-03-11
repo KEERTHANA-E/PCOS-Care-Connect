@@ -1,20 +1,21 @@
-<div class="container mt-3" [formGroup]="updtateForm">
-  <h1 class="text-center">Create post</h1>
+<div class="container mt-3" [formGroup]="updateForm">
+  <h1 class="text-center">Update post</h1>
   <div class="row">
     <mat-form-field class="col-lg-6">
       <mat-label>Name</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
     <mat-form-field class="col">
-      <mat-label>Notes</mat-label>
+      <mat-label>Description</mat-label>
       <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="5" formControlName="content"></textarea>
     </mat-form-field>
-    <div>
-      <form action="" method="post" enctype="multipart/form-data">
-        <input type="file">
-      </form>
-      <label>Choose file</label>
+    <div class="mb-3">
+      <label class="form-label">choose image</label>
+      <!-- <ul class="attachment-list" *ngFor="let file of data.attachments">
+                    <li><a>{{file.fileName}}</a></li>
+                  </ul> -->
+      <input type="file" class="form-control" (change)="onFilesSelected($event)" accept="image/*" multiple />
     </div>
 
   </div>

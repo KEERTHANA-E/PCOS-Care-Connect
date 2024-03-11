@@ -3,11 +3,26 @@ const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
 const cloudinary = require("cloudinary");
-
+cloudinary.config({
+    cloud_name: "chintu-16",
+    api_key: "218731319667714",
+    api_secret: "pvEoMr5tBuitLZ4VDZv6nvsuiSg",
+    secure: true
+})
 exports.createEduContent = catchAsyncErrors(async (req, res, next) => {
     req.body.postedBy = req.user.id;
     req.body.userName = req.user.name;
     const eduContent = await EduContent.create(req.body);
+    console.log("before post");
+    const { file } = req;
+    console.log(file);
+    if (file) {
+        const { secure_url, public_id } = await cloudinary.uploader.upload(file.path)
+        eduContent.images = { url: secure_url, public_id };
+        console.log("file");
+    }
+    await eduContent.save();
+    console.log(eduContent);
     return res.status(201).json({
         success: true,
         eduContent
@@ -17,6 +32,7 @@ exports.createEduContent = catchAsyncErrors(async (req, res, next) => {
 exports.getAllEduContent = catchAsyncErrors(async (req, res, next) => {
     const eduContentList = await EduContent.find();
     if (eduContentList) {
+        
         return res.status(200).json({
             success: true,
             eduContentList
@@ -52,7 +68,9 @@ exports.deleteEduContent = catchAsyncErrors(async (req, res, next) => {
     if (!eduContent) {
         return next(new ErrorHandler("EduContent not found", 404));
     }
-    if (eduContent.postedBy !== req.user.id) {
+    console.log(eduContent.postedBy)
+    console.log(req.user.id)
+    if (eduContent.postedBy.toString() !== req.user.id) {
         return next(new ErrorHandler("You are not authorized to update this eduContent", 403));
     }
     await eduContent.deleteOne(eduContent);

@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { LibraryService } from 'src/shared/service/library.service';
 import { UserService } from 'src/shared/service/user.service';
 import { DeleteDialogboxComponent } from '../delete-dialogbox/delete-dialogbox.component';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from '../update-post/share-dialogox.component';
+import { EditEduComponent } from '../edit-edu/edit-edu.component';
 
 @Component({
   selector: 'app-view',
@@ -47,7 +48,7 @@ export class ViewComponent implements OnInit {
   }
 
   openDialogForUpdate(post: any) {
-    const dialogRef = this.dialog.open(ShareDialogoxComponent, {
+    const dialogRef = this.dialog.open(EditEduComponent, {
       width: '800px',
       height: '500px',
       data: post,
@@ -80,10 +81,12 @@ export class ViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.data == true) {
         console.log('confirmed');
-        this.libraryService.deleteEduContent(post).subscribe((response: any) => {
-          console.log('response after delete', response);
-          window.location.reload();
-        });
+        this.libraryService
+          .deleteEduContent(post)
+          .subscribe((response: any) => {
+            console.log('response after delete', response);
+            window.location.reload();
+          });
       } else {
         console.log('deletion cancelled');
       }

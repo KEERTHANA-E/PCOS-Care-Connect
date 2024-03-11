@@ -10,30 +10,17 @@ const eduContentSchema = mongoose.Schema({
         type: String,
         required: [true, "Please Enter eduContent content"],
     },
-    images: [
-
-        {
-            public_id: {
-                type: String,
-                required: true,
-            },
-            url: {
-                type: String,
-                required: true,
-            },
-        },
-    ],
+    images:
+    {
+        type: Object,
+        url: String,
+        public_id: String
+    },
     videos: [
-
         {
-            public_id: {
-                type: String,
-                required: true,
-            },
-            url: {
-                type: String,
-                required: true,
-            },
+            type: Object,
+            url: String,
+            public_id: String
         },
     ],
     likes: [

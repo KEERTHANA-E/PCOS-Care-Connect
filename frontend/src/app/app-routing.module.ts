@@ -16,6 +16,8 @@ import { DietComponent } from './components/diet/diet.component';
 import { FavComponent } from './components/fav/fav.component';
 import { FavListComponent } from './components/fav-list/fav-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SearchWorkoutComponent } from './components/search-workout/search-workout.component';
+import { WorkoutContainerComponent } from './components/workout-container/workout-container.component';
 
 const routes: Routes = [
   {
@@ -58,7 +60,15 @@ const routes: Routes = [
   },
   {
     path: 'workout',
+    component: WorkoutContainerComponent,
+  },
+  {
+    path: 'recommendworkout',
     component: WorkoutComponent,
+  },
+  {
+    path: 'searchworkout',
+    component: SearchWorkoutComponent,
   },
   {
     path: 'profile',

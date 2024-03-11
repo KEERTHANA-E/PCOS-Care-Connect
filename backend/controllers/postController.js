@@ -1,10 +1,27 @@
 const Post = require('../models/postModel.js');
 const ErrorHandler = require('../utils/errorhandler.js');
 const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
+const cloudinary = require("cloudinary");
+cloudinary.config({
+    cloud_name: "chintu-16",
+    api_key: "218731319667714",
+    api_secret: "pvEoMr5tBuitLZ4VDZv6nvsuiSg",
+    secure: true
+})
+
 exports.createPost = catchAsyncErrors(async (req, res, next) => {
     req.body.postedBy = req.user.id;
     req.body.userName = req.user.name;
     const post = await Post.create(req.body);
+    console.log("before post");
+    const { file } = req;
+    console.log(file);
+    if (file) {
+        const { secure_url, public_id } = await cloudinary.uploader.upload(file.path)
+        post.images = { url: secure_url, public_id };
+        console.log("file");
+    }
+    await post.save();
     return res.status(201).json({
         success: true,
         post
@@ -13,6 +30,11 @@ exports.createPost = catchAsyncErrors(async (req, res, next) => {
 
 exports.getAllPosts = catchAsyncErrors(async (req, res) => {
     const posts = await Post.find();
+    // const postsWithUrls = posts.map(post => ({
+    //     ...post.toObject(),
+    //     images: post.images.map(image => image.url)
+    // }));
+    // console.log(postsWithUrls);
     return res.status(200).json({
         success: true,
         posts

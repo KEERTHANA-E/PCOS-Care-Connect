@@ -8,27 +8,57 @@ const cloudinary = require("cloudinary");
 const { use } = require("../app");
 
 // Register a User
-exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  //   folder: "avatars",
-  //   width: 150,
-  //   crop: "scale",
-  // });
+// exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+//   // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+//   //   folder: "avatars",
+//   //   width: 150,
+//   //   crop: "scale",
+//   // });
   
+//   const { name, email, password } = req.body;
+
+//   const user = await User.create({
+//     name,
+//     email,
+//     password,
+//     avatar: {
+//       public_id: "myCloud.public_id",
+//       url: "myCloud.secure_url",
+//     },
+//   });
+//   sendToken(user, 201, res);
+// });
+cloudinary.config({
+  cloud_name: "chintu-16",
+  api_key: "218731319667714",
+  api_secret: "pvEoMr5tBuitLZ4VDZv6nvsuiSg",
+  secure: true
+})
+exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  console.log(req);
   const { name, email, password } = req.body;
+  const { file } = req;
+
+  console.log(file)
 
   const user = await User.create({
     name,
     email,
-    password,
-    avatar: {
-      public_id: "myCloud.public_id",
-      url: "myCloud.secure_url",
-    },
+    password
+    // avatar: {
+    //   public_id: "myCloud.public_id",
+    //   url: "myCloud.secure_url",
+    // },
   });
+  if (file) {
+    const { secure_url, public_id } = await cloudinary.uploader.upload(file.path)
+    user.avatar = { url: secure_url, public_id };
+    console.log("file");
+  }
+
+  await user.save()
   sendToken(user, 201, res);
 });
-
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;

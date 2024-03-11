@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddPostComponent {
   addForm: FormGroup | any;
+  test!: File;
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialogRef<AddPostComponent>
@@ -23,12 +24,20 @@ export class AddPostComponent {
     if (this.addForm.valid) {
       console.log('before sending ', this.addForm.value);
       const tmp = this.addForm.value;
-      this.dialog.close({ data: tmp });
+      this.dialog.close({ data: [tmp, this.test] });
     } else {
       alert('fill all fields');
     }
   }
   closeDialog() {
     this.dialog.close();
+  }
+
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.test = file;
+      console.log(this.test);
+    }
   }
 }

@@ -1,0 +1,25 @@
+<div class="container mt-3" [formGroup]="addForm">
+  <h1 class="text-center">Create Educational content</h1>
+  <div class="row">
+    <mat-form-field class="col-lg-6">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Description</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5" formControlName="content"></textarea>
+    </mat-form-field>
+    <div class="mb-3">
+      <label class="form-label">choose image</label>
+      <!-- <ul class="attachment-list" *ngFor="let file of data.attachments">
+                    <li><a>{{file.fileName}}</a></li>
+                  </ul> -->
+      <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" multiple />
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <button class="btn btn-primary me-3" type="submit" (click)="createEduContent()">create Educational content</button>
+    <button class="btn btn-danger" type="submit" (click)="closeDialog()">cancel</button>
+  </div>
+</div>

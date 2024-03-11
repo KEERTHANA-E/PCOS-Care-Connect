@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddPostComponent } from 'src/app/components/add-post/add-post.component';
 import { CommunityService } from 'src/shared/service/community.service';
 import { UserService } from 'src/shared/service/user.service';
-import { ShareDialogoxComponent } from '../share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from '../update-post/share-dialogox.component';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
   data: any;
   constructor(
     private communityService: CommunityService,
-    private userService: UserService,
-    private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
@@ -33,20 +31,21 @@ export class HomeComponent implements OnInit {
   }
   openDialogForAdd() {
     const dialogRef = this.dialog.open(AddPostComponent, {
-      width: '800px',
-      height: '500px',
+      width: '600px',
+      height: '400px',
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {
         console.log('res', result);
         const obj = {
-          title: result.data.title,
-          content: result.data.content,
+          title: result.data[0].title,
+          content: result.data[0].content,
+          images: result.data[1],
         };
         this.communityService.createPost(obj).subscribe({
           next: (response) => {
             console.log('user created successfully:', response);
-            window.location.reload();
+            // window.location.reload();
             // do something else, like refresh the user list
           },
           error: (err) => {
@@ -58,11 +57,11 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  openDialogForUpdate(post : any) {
+  openDialogForUpdate(post: any) {
     const dialogRef = this.dialog.open(ShareDialogoxComponent, {
       width: '800px',
       height: '500px',
-      data : post
+      data: post,
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result != null) {

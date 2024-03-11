@@ -36,9 +36,16 @@ export class CommunityService {
     );
   }
   createPost(post: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('title', post.title);
+    formData.append('content', post.content);
+    formData.append('images', post.images);
+    console.log(post);
     const url = `http://localhost:3000/api/v1/post/new`;
     const options = { withCredentials: true };
-    return this.http.post(url, post, options).pipe(
+    console.log(formData);
+    // console.log(post);
+    return this.http.post(url, formData, options).pipe(
       tap((response) => {
         console.log('new post created successfully', response);
       }),

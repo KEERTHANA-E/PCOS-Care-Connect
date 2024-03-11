@@ -3,6 +3,19 @@
   margin: 0 auto;
   padding: 20px;
 }
+.responsive-image {
+  width: 100%; /* Set the image width to 100% of its container */
+  height: auto; /* Automatically adjust height to maintain aspect ratio */
+}
+
+/* Media query for adjusting image size based on screen width */
+@media (min-width: 768px) {
+  .responsive-image {
+    max-width: 600px; /* Set maximum width for larger screens */
+    /* You can adjust the width value as needed */
+  }
+}
+
 .media {
   display: flex;
   align-items: center;

@@ -76,16 +76,19 @@ def index():
 
 @app.route('/recommend', methods=['POST'])
 def make_recommendation():
-    # try:
     data = request.json
-    input_data = pd.DataFrame(data['input_data'], index=[0])  # Provide an index for the DataFrame
-    #print(len(input_data))
+    input_data = pd.DataFrame(data['input_data'], index=[0])
     max_nutritional_values = data['max_nutritional_values']
-    #print(type(max_nutritional_values[1]))
     ingredient_filter = data.get('ingredient_filter', None)
+    
     recommended_recipes = recommend(dataset, input_data, max_nutritional_values, ingredient_filter)
-    print(recommended_recipes.info())
+    
+    # Drop columns that you want to exclude from the response
+    columns_to_exclude = ['AggregatedRating', 'ReviewCount','RecipeYield','CookTime']
+    recommended_recipes = recommended_recipes.drop(columns=columns_to_exclude)
+    
     return jsonify(recommended_recipes.to_dict(orient='records'))
+
 
 
 
@@ -96,7 +99,7 @@ def chatbot():
     question = request.args.get('question')
     question = question.replace("+", " ")
     result = get_chat(question)
-    return {"result": result}
+    return result
     
 if __name__ == "__main__":
     app.run()

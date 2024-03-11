@@ -4,9 +4,9 @@ export class Community {
     title : string
     content : string
     comments : string[]
-    images : Images[]
+    images : Images
     createdAt : Date
-    constructor(_id : string,title : string,content : string,comments : string[],images : Images[],createdAt : Date){
+    constructor(_id : string,title : string,content : string,comments : string[],images : Images,createdAt : Date){
         this._id=_id;
         this.title=title;
         this.content=content;

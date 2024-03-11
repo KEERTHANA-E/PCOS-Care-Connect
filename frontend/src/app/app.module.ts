@@ -22,13 +22,13 @@ import { CommunityListComponent } from './components/community-list/community-li
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { DietComponent } from './components/diet/diet.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { MediaDisplayComponent } from './components/media-display/media-display.component';
-import { ShareDialogoxComponent } from './components/share-dialogox/share-dialogox.component';
+import { ShareDialogoxComponent } from './components/update-post/share-dialogox.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { DeleteDialogboxComponent } from './components/delete-dialogbox/delete-dialogbox.component';
@@ -36,6 +36,10 @@ import { ViewComponent } from './components/view/view.component';
 import { FavComponent } from './components/fav/fav.component';
 import { FavListComponent } from './components/fav-list/fav-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { WorkoutContainerComponent } from './components/workout-container/workout-container.component';
+import { SearchWorkoutComponent } from './components/search-workout/search-workout.component';
+import { AddEduComponent } from './components/add-edu/add-edu.component';
+import { EditEduComponent } from './components/edit-edu/edit-edu.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     FavComponent,
     FavListComponent,
     ProfileComponent,
+    WorkoutContainerComponent,
+    SearchWorkoutComponent,
+    AddEduComponent,
+    EditEduComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +85,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ReactiveFormsModule,
     ShareButtonsModule,
     ShareIconsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

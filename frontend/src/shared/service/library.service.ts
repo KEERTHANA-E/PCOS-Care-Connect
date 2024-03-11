@@ -25,9 +25,14 @@ export class LibraryService {
   }
 
   createEduContent(eduContent: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('title', eduContent.title);
+    formData.append('content', eduContent.content);
+    formData.append('images', eduContent.images);
+    console.log(eduContent);
     const url = `http://localhost:3000/api/v1/edu/new`;
     const options = { withCredentials: true };
-    return this.http.post(url, eduContent, options).pipe(
+    return this.http.post(url, formData, options).pipe(
       tap((response) => {
         console.log('new eduContent created successfully', response);
       }),
@@ -64,7 +69,7 @@ export class LibraryService {
     );
   }
   deleteEduContent(eduContent: any): Observable<any> {
-    const url = `http://localhost:3000/api/v1/edu/${eduContent.id}`;
+    const url = `http://localhost:3000/api/v1/edu/${eduContent._id}`;
     const options = { withCredentials: true };
     return this.http.delete(url, options).pipe(
       tap((response) => {

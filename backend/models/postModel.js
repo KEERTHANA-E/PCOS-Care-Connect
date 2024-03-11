@@ -10,17 +10,12 @@ const postSchema = mongoose.Schema({
         type: String,
         required: [true, "Please Enter post content"],
     },
-    images: [
-        // how to store images in mongodb
+    images: 
         {
-            public_id: {
-                type: String,
-            },
-            url: {
-                type: String,
-            },
+            type: Object,
+            url: String,
+            public_id: String
         },
-    ],
     likes: [
         { 
             type: mongoose.Schema.ObjectId, 

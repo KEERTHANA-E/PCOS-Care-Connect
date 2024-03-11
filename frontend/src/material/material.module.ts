@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -32,6 +32,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    MatCardModule
   ],
 })
 export class MaterialModule {}
