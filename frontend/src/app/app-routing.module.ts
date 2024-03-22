@@ -18,6 +18,10 @@ import { FavListComponent } from './components/fav-list/fav-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchWorkoutComponent } from './components/search-workout/search-workout.component';
 import { WorkoutContainerComponent } from './components/workout-container/workout-container.component';
+import { YoutubeVideosComponent } from './components/youtube-videos/youtube-videos.component';
+import { LibraryContainerComponent } from './components/library-container/library-container.component';
+import { DietContainerComponent } from './diet-container/diet-container.component';
+import { TmpComponent } from './tmp/tmp.component';
 
 const routes: Routes = [
   {
@@ -67,6 +71,14 @@ const routes: Routes = [
     component: WorkoutComponent,
   },
   {
+    path: 'videos',
+    component: YoutubeVideosComponent,
+  },
+  {
+    path: 'library',
+    component: LibraryContainerComponent,
+  },
+  {
     path: 'searchworkout',
     component: SearchWorkoutComponent,
   },
@@ -78,6 +90,7 @@ const routes: Routes = [
     path: 'diet',
     component: DietComponent,
   },
+  
   {
     path: 'content',
     component: LibraryComponent,

@@ -15,14 +15,14 @@
     </div>
     <div class="d-flex flex-row">
       <h1>{{ artworks.title }}</h1>
+    </div>
+    <div>
       <p *ngIf="artworks.postedBy==this.userService.currentUser._id" style="color: black;">
-      <i
-        class="fa-regular fa-pen-to-square fa-lg m-2" (click)="openDialogForUpdate(artworks)"></i>
+        <i class="fa-regular fa-pen-to-square fa-lg m-2" (click)="openDialogForUpdate(artworks)"></i>
         <span class="mx-2">Edit | </span>
-      <i
-        class="fa-solid fa-trash fa-lg m-2" (click)="openDialogForDelete(artworks)"></i>
+        <i class="fa-solid fa-trash fa-lg m-2" (click)="openDialogForDelete(artworks)"></i>
         <span class="mx-2">Delete</span>
-        </p>
+      </p>
     </div>
     <p>{{ artworks.content }}</p>
     <!-- You can display the full content here -->

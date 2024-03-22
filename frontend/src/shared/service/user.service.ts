@@ -58,7 +58,8 @@ export class UserService {
   }
   dietRecommend(formData: any): Observable<any> {
     const apiUrl = `http://localhost:5000/recommend`;
-    console.log('form data from ' + formData);
+    console.log('form data from ');
+    console.log(formData);
     return this.http.post<any>(apiUrl, formData).pipe(
       map((response) => {
         // Check for NaN values and handle them appropriately
@@ -85,8 +86,8 @@ export class UserService {
     const encodedPrompt = encodeURIComponent(prompt);
 
     // Construct the apiUrl with encoded prompt
-    const apiUrl = `http://127.0.0.1:5000/WorkoutS?question=my height is 180cms and weight is 210kgs`;
-
+    // const apiUrl = `http://127.0.0.1:5000/WorkoutS?question=my height is 180cms and weight is 210kgs`;
+const apiUrl = `http://127.0.0.1:5000/WorkoutS?question=my height is ${formData.height}cms and weight is ${formData.weight}kgs`;
     console.log(apiUrl);
     console.log('form data from ' + formData);
     return this.http.get<any>(apiUrl).pipe(

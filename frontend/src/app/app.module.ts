@@ -40,6 +40,10 @@ import { WorkoutContainerComponent } from './components/workout-container/workou
 import { SearchWorkoutComponent } from './components/search-workout/search-workout.component';
 import { AddEduComponent } from './components/add-edu/add-edu.component';
 import { EditEduComponent } from './components/edit-edu/edit-edu.component';
+import { YoutubeVideosComponent } from './components/youtube-videos/youtube-videos.component';
+import { LibraryContainerComponent } from './components/library-container/library-container.component';
+import { TmpComponent } from './tmp/tmp.component';
+import { DietContainerComponent } from './diet-container/diet-container.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { EditEduComponent } from './components/edit-edu/edit-edu.component';
     SearchWorkoutComponent,
     AddEduComponent,
     EditEduComponent,
+    YoutubeVideosComponent,
+    LibraryContainerComponent,
+    TmpComponent,
+    DietContainerComponent,
   ],
   imports: [
     BrowserModule,

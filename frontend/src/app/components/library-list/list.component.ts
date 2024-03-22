@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { LibraryService } from 'src/shared/service/library.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEduComponent } from '../add-edu/add-edu.component';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/shared/service/user.service';
 
 @Component({
   selector: 'app-list',
@@ -21,12 +23,18 @@ export class ListComponent implements OnInit {
   currentPage = 1;
   TotalItems = 123203;
   isActive = true;
+  videoItems: any[] | undefined;
+  loading: boolean = true;
+
   constructor(
     private libraryService: LibraryService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private http: HttpClient,
+    public userService :UserService
   ) {}
   ngOnInit(): void {
     this.getAllPosts();
+    this.getVideos();
   }
   getAllPosts() {
     const page = this.currentPage;
@@ -47,6 +55,21 @@ export class ListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.getAllPosts();
   }
+  getVideos(): void {
+    const apiUrl =
+      'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLGJ2sPspK2dxtkg8CdzwEHsvpXZTJ1a4_&maxResults=21&key=AIzaSyBm7ZA4eNeK34WqaKSDPsfCsssw37JHEdY';
+
+    this.http.get<any>(apiUrl).subscribe(
+      (data) => {
+        this.videoItems = data.items;
+        this.loading = false;
+      },
+      (err) => {
+        console.error('Error fetching videos:', err);
+        this.loading = false;
+      }
+    );
+  }
   openDialogForAdd() {
     const dialogRef = this.dialog.open(AddEduComponent, {
       width: '600px',
@@ -60,6 +83,7 @@ export class ListComponent implements OnInit {
           content: result.data[0].content,
           images: result.data[1],
         };
+
         this.libraryService.createEduContent(obj).subscribe({
           next: (response) => {
             console.log('user created successfully:', response);

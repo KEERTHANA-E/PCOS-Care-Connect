@@ -22,17 +22,17 @@ export class SearchWorkoutComponent implements OnInit {
   }
 
   test() {
-    // const query = this.searchForm.get('query').value;
-    // if (query == '') {
-    //   this.userService.searchWorkout('chest').subscribe((recommendation) => {
-    //     this.workout = recommendation;
+    const query = this.searchForm.get('query').value;
+    if (query == '') {
+      this.userService.searchWorkout('chest').subscribe((recommendation) => {
+        this.workout = recommendation;
 
-    //   });
-    // }
-    // else{
-    //   this.userService.searchWorkout(query).subscribe((recommendation) => {
-    //     this.workout = recommendation;
-    //   });
-    // }
+      });
+    }
+    else{
+      this.userService.searchWorkout(query).subscribe((recommendation) => {
+        this.workout = recommendation;
+      });
+    }
   }
 }

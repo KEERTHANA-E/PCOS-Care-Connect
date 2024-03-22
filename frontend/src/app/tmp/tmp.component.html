@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macro Calculator</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #FFA07A, #87CEEB);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .omni-calculator {
+      width: 400px;
+      /* Increase width as desired */
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .omni-calculator-header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .omni-calculator-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .omni-calculator-logo {
+      width: 100px;
+    }
+
+    .omni-calculator input[type="text"],
+    .omni-calculator input[type="number"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: #FFC0CB;
+      /* Pink background color */
+      padding-left: 40px;
+      /* To accommodate icon */
+    }
+
+    .omni-calculator button {
+      width: 100%;
+      padding: 10px;
+      background-color: #FFA07A;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .omni-calculator button:hover {
+      background-color: #FF6347;
+    }
+
+    .omni-calculator input[type="text"]::before,
+    .omni-calculator input[type="number"]::before {
+      content: url('https://cdn.omnicalculator.com/embed/omni-calculator.svg');
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="omni-calculator" data-calculator="health/macro" data-width="400" data-config='{}' data-currency="INR"
+    data-show-row-controls="false" data-version="3" data-t="1710338038559">
+    <div class="omni-calculator-header">Macro Calculator</div>
+    <div class="omni-calculator-footer">
+      <a href="https://www.omnicalculator.com/health/macro" target="_blank"><img alt="Omni" class="omni-calculator-logo"
+          src="https://cdn.omnicalculator.com/embed/omni-calculator.svg" /></a>
+    </div>
+  </div>
+  <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
+</body>
+
+</html>

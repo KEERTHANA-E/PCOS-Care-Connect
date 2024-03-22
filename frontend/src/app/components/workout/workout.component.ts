@@ -153,14 +153,20 @@ export class WorkoutComponent {
   onSubmit() {
     if (this.form.valid) {
       console.log(this.form.value);
-      this.userService
-        .workoutRecommend(this.form.value)
-        .subscribe((recommendation) => {
-          this.scheduleData = JSON.parse(recommendation.result);
-          console.log('spliting' + this.scheduleData);
-        });
+      this.userService.workoutRecommend(this.form.value).subscribe(
+        (recommendation) => {
+          console.log(recommendation);
+          this.selectedWeek = recommendation;
+          // Call displayRandomSchedule after receiving recommendation
+        },
+        (error) => {
+          console.log('Error occurred: ', error);
+          alert('An error occurred. Please try again.'); // Alert user about the error
+          this.displayRandomSchedule(); // Call displayRandomSchedule in case of error
+        }
+      );
     } else {
-      alert('please enter a valid form details');
+      alert('Please enter valid form details');
     }
   }
 }

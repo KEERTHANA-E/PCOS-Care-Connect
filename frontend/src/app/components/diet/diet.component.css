@@ -10,28 +10,46 @@
   background-color:#DDCAD9;
   color: #7c616c;
 }
-
-.recipe-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.recipe-card {
-  flex: 1 0 600px; /* Ensure all cards have the same width */
-  margin: 10px;
+.weekly-plan {
   border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: hidden;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
 }
 
-.recipe {
-  padding: 10px;
+.day {
+  margin-bottom: 20px;
 }
 
-.recipe-image {
-  max-width: 100%;
-  height: auto;
+.day h3 {
   margin-bottom: 10px;
+  color: #333;
 }
 
-/* Adjust other styles as needed */
+.meal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.meal-list li {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #666;
+}
+
+.meal-category {
+  font-weight: bold;
+  color: #333;
+}
+
+.meal-name {
+  margin-left: 10px;
+  color: #0066cc;
+}
+
+.meal-description {
+  margin-left: 10px;
+}
+
+
